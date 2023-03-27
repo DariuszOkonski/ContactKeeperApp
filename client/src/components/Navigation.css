@@ -1,0 +1,39 @@
+.navigation {
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navigation__logo {
+  display: flex;
+}
+
+.navigation__logo i {
+  margin-right: 10px;
+  font-size: 2rem;
+}
+
+.navigation__logo h2 {
+  font-size: 1.8rem;
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+
+.navigation__list {
+  display: flex;
+}
+
+.navigation__item {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .navigation {
+    flex-direction: column;
+  }
+}
