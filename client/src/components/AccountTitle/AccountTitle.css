@@ -1,0 +1,18 @@
+.account-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.account-title__prefix,
+.account-title__postfix {
+  letter-spacing: 1px;
+  font-weight: 100;
+}
+
+.account-title__prefix {
+  color: var(--black-color);
+}
+
+.account-title__postfix {
+  color: var(--primary-color);
+}

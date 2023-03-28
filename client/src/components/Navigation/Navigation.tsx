@@ -1,7 +1,7 @@
-import configText from '../utils/cofigText';
+import configText from '../../utils/cofigText';
 import './Navigation.css';
 import { Link } from 'react-router-dom';
-import { endpoints } from '../utils/endpoints';
+import { endpoints } from '../../utils/endpoints';
 
 const Navigation = () => {
   return (
@@ -15,6 +15,11 @@ const Navigation = () => {
         <ul className='navigation__list'>
           <li className='navigation__item'>
             <Link to={endpoints.home}>{configText.navigation.links.home}</Link>
+          </li>
+          <li className='navigation__item'>
+            <Link to={endpoints.contacts}>
+              {configText.navigation.links.contacts}
+            </Link>
           </li>
           <li className='navigation__item'>
             <Link to={endpoints.about}>

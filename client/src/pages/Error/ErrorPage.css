@@ -9,3 +9,9 @@
   letter-spacing: 1px;
   font-weight: 100;
 }
+
+@media (max-width: 600px) {
+  .error__text {
+    font-size: 1.2rem;
+  }
+}

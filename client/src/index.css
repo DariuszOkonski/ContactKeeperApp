@@ -47,10 +47,21 @@ a {
 .btn {
   padding: 10px 20px;
   text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-wide {
+  width: 100%;
 }
 
 .btn-main {
   min-width: 120px;
   margin: 10px;
   background-color: var(--primary-color);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--white-color);
 }

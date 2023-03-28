@@ -1,10 +1,11 @@
 import './App.css';
-import Navigation from './components/Navigation';
+import Navigation from './components/Navigation/Navigation';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { endpoints } from './utils/endpoints';
 import About from './pages/About/About';
 import Home from './pages/Home/Home';
 import Error from './pages/Error/ErrorPage';
+import Register from './pages/Register/Register';
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
         <div className='container'>
           <Routes>
             <Route path={endpoints.home} element={<Home />} />
+            <Route path={endpoints.contacts} element={<h1>CONTACTS</h1>} />
             <Route path={endpoints.about} element={<About />} />
-            <Route path={endpoints.register} element={<h1>REGISTER</h1>} />
+            <Route path={endpoints.register} element={<Register />} />
             <Route path={endpoints.login} element={<h1>LOGIN</h1>} />
             <Route path='/404' element={<Error />} />
             <Route path='*' element={<Navigate to='/404' replace />} />
