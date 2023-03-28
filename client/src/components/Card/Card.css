@@ -8,13 +8,8 @@
 }
 
 .card__left {
-  /* background-color: yellow; */
   flex-grow: 1;
 }
-
-/* .card__right {
-  background-color: crimson;
-} */
 
 .card__name {
   color: var(--primary-color);

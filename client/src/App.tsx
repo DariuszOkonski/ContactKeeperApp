@@ -23,8 +23,11 @@ function App() {
             <Route path={endpoints.about} element={<About />} />
             <Route path={endpoints.register} element={<Register />} />
             <Route path={endpoints.login} element={<Login />} />
-            <Route path='/404' element={<Error />} />
-            <Route path='*' element={<Navigate to='/404' replace />} />
+            <Route path={endpoints.notFound} element={<Error />} />
+            <Route
+              path={endpoints.error}
+              element={<Navigate to={endpoints.notFound} replace />}
+            />
           </Routes>
         </div>
       </div>

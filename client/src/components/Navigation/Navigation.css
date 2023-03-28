@@ -1,5 +1,5 @@
 .navigation {
-  padding: 10px;
+  padding: 15px 10px;
   background-color: var(--primary-color);
   color: var(--white-color);
 
@@ -35,5 +35,9 @@
 @media (max-width: 600px) {
   .navigation {
     flex-direction: column;
+  }
+
+  .navigation__logo {
+    margin-bottom: 15px;
   }
 }

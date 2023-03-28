@@ -44,15 +44,8 @@ function ContactType() {
       />
 
       {contactsArray.map((card) => (
-        <Card key={card.id} />
+        <Card key={card.id} {...card} />
       ))}
-
-      {/* <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card /> */}
     </div>
   );
 }

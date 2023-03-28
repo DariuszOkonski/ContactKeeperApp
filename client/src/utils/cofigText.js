@@ -27,6 +27,7 @@ const configText = {
       password: 'password',
       rePassword: 're-password',
       filterContacts: 'filter-contacts',
+      phone: 'phone',
     },
     type: {
       text: 'text',

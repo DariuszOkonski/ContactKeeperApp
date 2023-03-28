@@ -14,18 +14,18 @@ const AddContact = () => {
 
       <Input
         labelText={configText.input.labelText.name}
-        name='name'
-        type='text'
+        name={configText.input.name.name}
+        type={configText.input.type.text}
       />
       <Input
         labelText={configText.input.labelText.email}
-        name='name'
-        type='text'
+        name={configText.input.name.email}
+        type={configText.input.type.email}
       />
       <Input
         labelText={configText.input.labelText.phone}
-        name='name'
-        type='text'
+        name={configText.input.name.phone}
+        type={configText.input.type.text}
       />
 
       <Button
