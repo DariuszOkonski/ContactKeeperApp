@@ -1,5 +1,8 @@
 :root {
-  --primary-color: rgb(2, 58, 179);
+  --primary-color: rgb(10, 49, 133);
+  --success-color: rgb(13, 97, 13);
+  --danger-color: rgb(139, 6, 6);
+  --information-color: rgb(46, 43, 43);
   --secondary-color: rgb(211, 211, 211);
   --white-color: rgb(255, 255, 255);
   --dark-color: rgb(131, 131, 131);
@@ -39,4 +42,15 @@ a {
   color: var(--white-color);
   text-decoration: none;
   display: block;
+}
+
+.btn {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.btn-main {
+  min-width: 120px;
+  margin: 10px;
+  background-color: var(--primary-color);
 }

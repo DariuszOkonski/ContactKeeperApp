@@ -6,10 +6,10 @@ import { endpoints } from '../utils/endpoints';
 const Navigation = () => {
   return (
     <div className='navigation'>
-      <div className='navigation__logo'>
+      <Link className='navigation__logo' to={endpoints.home}>
         <i className='fas fa-id-card-alt'></i>
         <h2>{configText.navigation.logo.text}</h2>
-      </div>
+      </Link>
 
       <div className='navigation__links'>
         <ul className='navigation__list'>
