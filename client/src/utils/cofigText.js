@@ -8,8 +8,8 @@ const configText = {
     register: 'Register',
     login: 'Login',
     addContact: 'Add Contact',
-    edit: 'edit',
-    delete: 'delete',
+    edit: 'Edit',
+    delete: 'Delete',
     clear: 'Clear',
   },
   input: {
@@ -33,6 +33,7 @@ const configText = {
       text: 'text',
       email: 'email',
       password: 'password',
+      button: 'button',
     },
   },
   accountRegister: {

@@ -7,13 +7,11 @@ import Home from './pages/Home/Home';
 import Error from './pages/Error/ErrorPage';
 import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
-// import Spinner from './components/Spinner/Spinner';
 import Contacts from './pages/Contacts/Contacts';
 
 function App() {
   return (
     <BrowserRouter>
-      {/* <Spinner /> */}
       <div className='App'>
         <Navigation />
         <div className='container'>
