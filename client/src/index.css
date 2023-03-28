@@ -1,5 +1,6 @@
 :root {
   --primary-color: rgb(10, 49, 133);
+  --hover-color: rgb(10, 26, 63);
   --success-color: rgb(13, 97, 13);
   --danger-color: rgb(185, 6, 6);
   --information-color: rgb(46, 43, 43);
@@ -7,6 +8,12 @@
   --white-color: rgb(255, 255, 255);
   --dark-color: rgb(131, 131, 131);
   --black-color: rgb(58, 58, 58);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -49,6 +56,15 @@ a {
   text-align: center;
   border: none;
   cursor: pointer;
+  transition: all 0.2s linear;
+}
+
+.btn:hover {
+  background-color: var(--hover-color);
+}
+
+.btn-small {
+  padding: 7px 12px;
 }
 
 .btn-wide {
@@ -64,4 +80,27 @@ a {
 .btn-primary {
   background-color: var(--primary-color);
   color: var(--white-color);
+}
+
+.btn-information {
+  background-color: var(--information-color);
+  color: var(--white-color);
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: var(--white-color);
+}
+
+.btn-dark {
+  background-color: var(--dark-color);
+  color: var(--white-color);
+}
+
+.mr-small {
+  margin-right: 2px;
+}
+
+.mtb-small {
+  margin: 5px 0;
 }

@@ -1,5 +1,4 @@
 import './Spinner.css';
-// import spinner from 'loading-gif.gif';
 
 function Spinner() {
   return (

@@ -1,0 +1,39 @@
+.contacts {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.contacts__left-column {
+  flex-grow: 1;
+  margin: 0 10px 0 0;
+}
+
+.contacts__right-column {
+  flex-grow: 1;
+  margin: 0 0 0 10px;
+}
+
+.card__text {
+  margin: 10px 0;
+  color: var(--black-color);
+}
+
+@media (max-width: 900px) {
+  .contacts {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  .contacts__left-column,
+  .contacts__right-column {
+    text-align: left;
+    padding: 10px 0;
+    margin: 0;
+  }
+
+  .contacts__left-column {
+    margin-bottom: 20px;
+  }
+}

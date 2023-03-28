@@ -1,7 +1,16 @@
 const configText = {
+  addContact: {
+    prefix: 'Add',
+    postfix: 'Contact',
+  },
+  contactType: {},
   buttons: {
     register: 'Register',
     login: 'Login',
+    addContact: 'Add Contact',
+    edit: 'edit',
+    delete: 'delete',
+    clear: 'Clear',
   },
   input: {
     labelText: {
@@ -9,12 +18,15 @@ const configText = {
       email: 'E-mail',
       password: 'Password',
       confirmPassword: 'Confirm Password',
+      phone: 'Phone',
+      filterContexts: 'Filter Contacts',
     },
     name: {
       name: 'name',
       email: 'email',
       password: 'password',
       rePassword: 're-password',
+      filterContacts: 'filter-contacts',
     },
     type: {
       text: 'text',

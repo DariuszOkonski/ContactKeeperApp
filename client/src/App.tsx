@@ -7,7 +7,8 @@ import Home from './pages/Home/Home';
 import Error from './pages/Error/ErrorPage';
 import Register from './pages/Register/Register';
 import Login from './pages/Login/Login';
-import Spinner from './components/Spinner/Spinner';
+// import Spinner from './components/Spinner/Spinner';
+import Contacts from './pages/Contacts/Contacts';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <div className='container'>
           <Routes>
             <Route path={endpoints.home} element={<Home />} />
-            <Route path={endpoints.contacts} element={<h1>CONTACTS</h1>} />
+            <Route path={endpoints.contacts} element={<Contacts />} />
             <Route path={endpoints.about} element={<About />} />
             <Route path={endpoints.register} element={<Register />} />
             <Route path={endpoints.login} element={<Login />} />
@@ -26,9 +27,6 @@ function App() {
             <Route path='*' element={<Navigate to='/404' replace />} />
           </Routes>
         </div>
-
-        {/* <i className='fas fa-envelope-open'></i> */}
-        {/* <i className='fas fa-phone'></i> */}
       </div>
     </BrowserRouter>
   );

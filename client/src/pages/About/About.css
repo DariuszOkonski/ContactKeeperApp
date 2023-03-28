@@ -5,13 +5,14 @@
 .about__title {
   letter-spacing: 1px;
   font-weight: 300;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
 }
 
 .about__text,
 .about__author {
   font-weight: 500;
   font-size: 1.2rem;
+  margin: 20px 0;
 }
 
 .about__version {

@@ -1,0 +1,37 @@
+.card {
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid var(--dark-color);
+  padding: 10px;
+  margin: 10px 0;
+  background-color: var(--white-color);
+}
+
+.card__left {
+  /* background-color: yellow; */
+  flex-grow: 1;
+}
+
+/* .card__right {
+  background-color: crimson;
+} */
+
+.card__name {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.card__type {
+  padding: 5px;
+  border-radius: 4px;
+  color: var(--white-color);
+  font-size: 0.8rem;
+}
+
+.card__type.card__type--primary {
+  background-color: var(--primary-color);
+}
+
+.card__type.card__type--success {
+  background-color: var(--success-color);
+}

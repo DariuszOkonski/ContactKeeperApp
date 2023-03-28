@@ -1,0 +1,5 @@
+.add-contact {
+  background-color: var(--secondary-color);
+  padding: 10px;
+  border: 1px solid var(--dark-color);
+}
