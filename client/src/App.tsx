@@ -1,23 +1,24 @@
 import './App.css';
 import Navigation from './components/Navigation';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { endpoints } from './utils/endpoints';
 import About from './pages/About/About';
 import Home from './pages/Home/Home';
+import Error from './pages/Error/ErrorPage';
 
 function App() {
   return (
     <BrowserRouter>
       <div className='App'>
         <Navigation />
-        <Routes>
-          <Route path={endpoints.home} element={<Home />} />
-        </Routes>
         <div className='container'>
           <Routes>
+            <Route path={endpoints.home} element={<Home />} />
             <Route path={endpoints.about} element={<About />} />
             <Route path={endpoints.register} element={<h1>REGISTER</h1>} />
             <Route path={endpoints.login} element={<h1>LOGIN</h1>} />
+            <Route path='/404' element={<Error />} />
+            <Route path='*' element={<Navigate to='/404' replace />} />
           </Routes>
         </div>
 

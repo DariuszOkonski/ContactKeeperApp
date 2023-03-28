@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import configText from '../../utils/cofigText';
 import { endpoints } from '../../utils/endpoints';
 import './Home.css';
 
@@ -7,10 +8,10 @@ const Home = () => {
     <div className='home'>
       <div className='home__buttons'>
         <Link className='btn btn-main' to={endpoints.register}>
-          Register
+          {configText.home.buttons.register}
         </Link>
         <Link className='btn btn-main' to={endpoints.login}>
-          Login
+          {configText.home.buttons.login}
         </Link>
       </div>
     </div>

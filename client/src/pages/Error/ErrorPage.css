@@ -1,0 +1,11 @@
+.error {
+  padding: 20px;
+  text-align: center;
+  background-color: var(--danger-color);
+  color: var(--white-color);
+}
+
+.error__text {
+  letter-spacing: 1px;
+  font-weight: 100;
+}

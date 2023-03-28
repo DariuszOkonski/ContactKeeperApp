@@ -1,4 +1,7 @@
 const configText = {
+  error: {
+    text: '!!! 404 - Page Not Found !!!',
+  },
   navigation: {
     logo: {
       text: 'Contact Keeper',
@@ -9,6 +12,12 @@ const configText = {
       register: 'Register',
       login: 'Login',
       logout: 'Logout',
+    },
+  },
+  home: {
+    buttons: {
+      register: 'Register',
+      login: 'Login',
     },
   },
   about: {
