@@ -1,0 +1,33 @@
+.about {
+  color: var(--black-color);
+}
+
+.about__title {
+  letter-spacing: 1px;
+  font-weight: 300;
+  margin-bottom: 25px;
+}
+
+.about__text,
+.about__author {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.about__version {
+  background-color: var(--black-color);
+  color: var(--white-color);
+  padding: 10px;
+}
+
+@media (max-width: 600px) {
+  .about__title {
+    font-size: 1.8rem;
+  }
+
+  .about__text,
+  .about__author,
+  .about__version {
+    font-size: 1rem;
+  }
+}

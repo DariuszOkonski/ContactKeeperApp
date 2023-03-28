@@ -2,6 +2,7 @@ import './App.css';
 import Navigation from './components/Navigation';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { endpoints } from './utils/endpoints';
+import About from './pages/About/About';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <div className='container'>
           <Routes>
             <Route path={endpoints.home} element={<h1>HOME</h1>} />
-            <Route path={endpoints.about} element={<h1>ABOUT</h1>} />
+            <Route path={endpoints.about} element={<About />} />
             <Route path={endpoints.register} element={<h1>REGISTER</h1>} />
             <Route path={endpoints.login} element={<h1>LOGIN</h1>} />
           </Routes>

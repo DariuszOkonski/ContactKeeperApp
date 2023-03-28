@@ -3,6 +3,7 @@
   --secondary-color: rgb(211, 211, 211);
   --white-color: rgb(255, 255, 255);
   --dark-color: rgb(131, 131, 131);
+  --black-color: rgb(58, 58, 58);
 }
 
 body {
@@ -13,7 +14,7 @@ body {
 }
 
 .container {
-  background-color: yellow;
+  /* background-color: var(--secondary-color); */
   max-width: 1100px;
   margin: 0 auto;
   padding: 10px;
