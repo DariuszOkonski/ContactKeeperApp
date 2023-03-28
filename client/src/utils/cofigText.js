@@ -1,4 +1,27 @@
 const configText = {
+  buttons: {
+    register: 'Register',
+    login: 'Login',
+  },
+  input: {
+    labelText: {
+      name: 'Name',
+      email: 'E-mail',
+      password: 'Password',
+      confirmPassword: 'Confirm Password',
+    },
+    name: {
+      name: 'name',
+      email: 'email',
+      password: 'password',
+      rePassword: 're-password',
+    },
+    type: {
+      text: 'text',
+      email: 'email',
+      password: 'password',
+    },
+  },
   accountRegister: {
     prefix: 'Account',
     postfix: 'Register',
@@ -6,6 +29,12 @@ const configText = {
     email: 'E-mail',
     password: 'Password',
     confirmPassword: 'Confirm Password',
+  },
+  accountLogin: {
+    prefix: 'Account',
+    postfix: 'Login',
+    email: 'E-mail',
+    password: 'Password',
   },
   error: {
     text: '!!! 404 - Page Not Found !!!',

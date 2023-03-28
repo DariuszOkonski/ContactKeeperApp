@@ -2,19 +2,14 @@ import AccountTitle from '../../components/AccountTitle/AccountTitle';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import configText from '../../utils/cofigText';
-import './Register.css';
+import './Login.css';
 
-function Register() {
+function Login() {
   return (
-    <div className='register'>
+    <div className='login'>
       <AccountTitle
-        prefix={configText.accountRegister.prefix}
-        postfix={configText.accountRegister.postfix}
-      />
-      <Input
-        labelText={configText.input.labelText.name}
-        name={configText.input.name.name}
-        type={configText.input.type.text}
+        prefix={configText.accountLogin.prefix}
+        postfix={configText.accountLogin.postfix}
       />
       <Input
         labelText={configText.input.labelText.email}
@@ -26,17 +21,13 @@ function Register() {
         name={configText.input.name.password}
         type={configText.input.type.password}
       />
-      <Input
-        labelText={configText.input.labelText.confirmPassword}
-        name={configText.input.name.rePassword}
-        type={configText.input.type.password}
-      />
+
       <Button
         clsName='btn btn-primary btn-wide'
-        text={configText.buttons.register}
+        text={configText.buttons.login}
       />
     </div>
   );
 }
 
-export default Register;
+export default Login;
