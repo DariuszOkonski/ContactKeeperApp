@@ -1,6 +1,10 @@
 const express = require('express');
 const { endpoints } = require('../../utils/endpoints');
-const { getUsers, userRegistration } = require('./users.controller');
+const {
+  getUsers,
+  userRegistration,
+  checkUserRegistrationData,
+} = require('./users.controller');
 const usersRouter = express.Router();
 
 usersRouter.get(endpoints.slash, getUsers);
@@ -10,7 +14,7 @@ usersRouter.get(endpoints.slash, getUsers);
  * @desc    Register a user
  * @access  Public
  */
-usersRouter.post(endpoints.slash, userRegistration);
+usersRouter.post(endpoints.slash, checkUserRegistrationData, userRegistration);
 
 module.exports = {
   usersRouter,
