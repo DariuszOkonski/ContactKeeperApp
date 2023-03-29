@@ -1,0 +1,6 @@
+.errorsList {
+  color: var(--white-color);
+  background-color: var(--danger-color);
+  padding: 5px;
+  margin: 5px 0;
+}

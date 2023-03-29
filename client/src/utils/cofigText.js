@@ -78,6 +78,9 @@ const configText = {
     text: 'This is a MERN stack app for keeping contacts',
     author: 'author: Dariusz Okoński',
   },
+  errors: {
+    unknownError: 'Unknown Error',
+  },
 };
 
 export default configText;

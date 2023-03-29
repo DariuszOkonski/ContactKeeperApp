@@ -20,6 +20,9 @@ function userRegistration(req, res) {
     return res.status(400).json({ errors: errors.array() });
   }
 
+  console.log('--- checking here ---');
+  console.log(req.body);
+
   return res.status(200).json(req.body);
 }
 
