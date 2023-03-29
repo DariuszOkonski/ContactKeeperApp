@@ -10,6 +10,7 @@ const useGetRequest = () => {
     setError(null);
     try {
       const response = await fetch(url, {
+        method: 'GET',
         headers: { origin: '*' },
       });
 

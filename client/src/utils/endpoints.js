@@ -9,9 +9,15 @@ export const endpoints = {
 };
 
 const baseApi = 'http://localhost:5000';
+const baseContacts = '/api/contacts';
+const baseAuth = '/api/auth';
+const baseUsers = '/api/users';
+
 export const endpointsExpress = {
   localhost: baseApi,
-  auth: `${baseApi}/api/auth`,
-  contacts: `${baseApi}/api/contacts`,
-  users: `${baseApi}/api/users`,
+  auth: `${baseApi}${baseAuth}`,
+  contacts: `${baseApi}${baseContacts}`,
+  updateContacts: (id) => `${baseApi}${baseContacts}/:${id}`,
+  deleteContact: (id) => `${baseApi}${baseContacts}/:${id}`,
+  users: `${baseApi}${baseUsers}`,
 };

@@ -18,7 +18,7 @@ function Register() {
   }, [data, error, loading]);
 
   const onSubmit = async (e: any) => {
-    getRequest(endpointsExpress.users);
+    getRequest(endpointsExpress.contacts);
   };
 
   return (
