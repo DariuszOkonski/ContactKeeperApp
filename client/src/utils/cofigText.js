@@ -80,6 +80,8 @@ const configText = {
   },
   errors: {
     unknownError: 'Unknown Error',
+    differentLenghts: 'Passwords have different lenghts',
+    different: 'Passwords are different',
   },
 };
 

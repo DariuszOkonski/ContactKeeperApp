@@ -4,6 +4,7 @@ import Button from '../../components/Button/Button';
 import ErrorsList from '../../components/ErrorsList/ErrorsList';
 import Input from '../../components/Input/Input';
 import usePostRequest from '../../hooks/usePostRequest';
+import { ErrorMessage } from '../../interfaces/general';
 import configText from '../../utils/cofigText';
 import { errorTimeOut } from '../../utils/constants';
 import { endpointsExpress } from '../../utils/endpoints';
@@ -11,7 +12,7 @@ import './Register.css';
 
 function Register() {
   const [showError, setShowError] = useState<boolean>(false);
-  const [dataError, setDataError] = useState<any[]>([]);
+  const [dataError, setDataError] = useState<ErrorMessage | null>(null);
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -21,43 +22,47 @@ function Register() {
 
   useEffect(() => {
     if (data && data.errors) {
-      setErrors(data.errors);
+      setErrors(data);
     }
   }, [data, loading]);
 
   const onSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (password.length !== rePassword.length) {
-      const errors = [{ msg: 'Passwords have different lenghts' }];
+      const errors: ErrorMessage = {
+        errors: [{ msg: configText.errors.differentLenghts }],
+      };
       setErrors(errors);
     }
 
     if (password !== rePassword) {
-      const errors = [{ msg: 'Passwords are different' }];
+      const errors: ErrorMessage = {
+        errors: [{ msg: configText.errors.different }],
+      };
       setErrors(errors);
     }
 
     const body = {
-      name: 'John Doe',
-      email: 'john@gmail.com',
-      password: 'Test_1234',
+      name,
+      email,
+      password,
     };
 
-    postRequest(endpointsExpress.users, body);
+    await postRequest(endpointsExpress.users, body);
   };
 
-  const setErrors = (errors: any[]) => {
+  const setErrors = (errors: ErrorMessage) => {
     setDataError(errors);
     setShowError(true);
     setTimeout(() => {
       setShowError(false);
-      setDataError([]);
+      setDataError(null);
     }, errorTimeOut);
   };
 
   return (
     <>
       <form className='register'>
-        {showError && <ErrorsList errors={dataError} />}
+        {showError && <ErrorsList errors={dataError?.errors} />}
         <AccountTitle
           prefix={configText.accountRegister.prefix}
           postfix={configText.accountRegister.postfix}

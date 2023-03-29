@@ -1,6 +1,12 @@
+interface ErrosList {
+  msg: string;
+  param?: string;
+  location?: string;
+}
+
 export interface ErrorMessage {
   text?: string;
-  errors?: any[];
+  errors?: ErrosList[];
 }
 
 export interface RegisterUser {

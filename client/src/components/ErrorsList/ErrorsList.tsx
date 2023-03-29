@@ -1,10 +1,8 @@
+import { ErrorMessage } from '../../interfaces/general';
 import './ErrorsList.css';
 
-interface ErrorsListProps {
-  errors: any[];
-}
-
-function ErrorsList(props: ErrorsListProps) {
+function ErrorsList(props: ErrorMessage) {
+  if (props.errors === undefined) return null;
   return (
     <div>
       {props.errors.map((error, index) => (

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { RegisterUser } from '../interfaces/general';
+import { ErrorMessage, RegisterUser } from '../interfaces/general';
 import configText from '../utils/cofigText';
 
 const usePostRequest = () => {
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<ErrorMessage | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   const postRequest = async (url: string, body: RegisterUser) => {
