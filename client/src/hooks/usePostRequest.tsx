@@ -6,7 +6,11 @@ const usePostRequest = () => {
   const [data, setData] = useState<ErrorMessage | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const postRequest = async (url: string, body: RegisterUser) => {
+  const postRequest = async (
+    url: string,
+    body: RegisterUser,
+    token: string = ''
+  ) => {
     setLoading(true);
 
     try {
@@ -15,6 +19,7 @@ const usePostRequest = () => {
         headers: {
           origin: '*',
           'Content-Type': 'application/json',
+          'x-auth-token': token,
         },
         body: JSON.stringify(body),
       });
