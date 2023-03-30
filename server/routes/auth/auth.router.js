@@ -1,6 +1,10 @@
 const express = require('express');
 const { endpoints } = require('../../utils/endpoints');
-const { getLoggedInUser, logInUser } = require('./auth.controller');
+const {
+  getLoggedInUser,
+  logInUser,
+  checkLogInUserData,
+} = require('./auth.controller');
 const authRouter = express.Router();
 
 /**
@@ -15,7 +19,7 @@ authRouter.get(endpoints.slash, getLoggedInUser);
  * @desc    auth user & get token
  * @access  Public
  */
-authRouter.post(endpoints.slash, logInUser);
+authRouter.post(endpoints.slash, checkLogInUserData, logInUser);
 
 module.exports = {
   authRouter,

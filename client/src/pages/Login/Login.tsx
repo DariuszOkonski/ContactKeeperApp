@@ -4,6 +4,8 @@ import Input from '../../components/Input/Input';
 import configText from '../../utils/cofigText';
 import './Login.css';
 
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjQyNWJkYTY5NTFkZWEyOTllMjU0OWIyIn0sImlhdCI6MTY4MDE5NDk4MiwiZXhwIjoxNjgwNTU0OTgyfQ.syzzB5SZ8Oo1vztGBVo4jA4Jd71UUNvHjNCAwSKOGGI
+
 function Login() {
   return (
     <div className='login'>

@@ -18,6 +18,11 @@ function getUsers(req, res) {
   return res.status(200).json({ message: 'Users' });
 }
 
+/**
+ * @route   POST api/users
+ * @desc    Register a user
+ * @access  Public
+ */
 async function userRegistration(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
