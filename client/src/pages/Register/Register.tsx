@@ -24,6 +24,8 @@ function Register() {
     if (data && data.errors) {
       setErrors(data);
     }
+
+    console.log('!!! data: ', data);
   }, [data, loading]);
 
   const onSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {

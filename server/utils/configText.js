@@ -8,6 +8,10 @@ const configText = {
     email: 'Please include a valid email',
     password: 'Please entar a password with 6 or more characters',
   },
+  errors: {
+    serverError: 'Server Error',
+    userAlreadyExists: 'User already exists',
+  },
 };
 
 module.exports = {

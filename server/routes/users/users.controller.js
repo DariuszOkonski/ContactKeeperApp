@@ -1,6 +1,7 @@
 const User = require('../../models/user.model');
 const { check, validationResult } = require('express-validator');
 const { configText } = require('../../utils/configText');
+const bcrypt = require('bcryptjs');
 
 const checkUserRegistrationData = [
   check('name', configText.validation.name).not().isEmpty(),
@@ -14,16 +15,37 @@ function getUsers(req, res) {
   return res.status(200).json({ message: 'Users' });
 }
 
-function userRegistration(req, res) {
+async function userRegistration(req, res) {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  console.log('--- checking here ---');
-  console.log(req.body);
+  const { name, email, password } = req.body;
 
-  return res.status(200).json(req.body);
+  try {
+    let user = await User.findOne({ email });
+
+    if (user) {
+      const errors = {
+        errors: [{ msg: configText.errors.userAlreadyExists }],
+      };
+      return res.status(400).json(errors);
+    }
+
+    user = new User({ name, email, password });
+
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(password, salt);
+    await user.save();
+
+    return res.status(200).json(user);
+  } catch (err) {
+    const errors = {
+      errors: [{ msg: configText.errors.serverError }],
+    };
+    return res.status(500).json(errors);
+  }
 }
 
 module.exports = {
