@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://dazzdev:0of41iUHNbaPZDXb@contactkeeperapp.kfiws7w.mongodb.net/?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://dazzdev:0of41iUHNbaPZDXb@contactkeeperapp.kfiws7w.mongodb.net/?retryWrites=true&w=majority",
+  "jesonWebTokenSecret": "2a7da1a2-9167-4dfc-a57d-b50bb336d79c"
 }

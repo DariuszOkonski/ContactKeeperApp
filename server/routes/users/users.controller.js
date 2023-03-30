@@ -2,6 +2,9 @@ const User = require('../../models/user.model');
 const { check, validationResult } = require('express-validator');
 const { configText } = require('../../utils/configText');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
+const { EXPIRES_IN } = require('../../utils/constants');
 
 const checkUserRegistrationData = [
   check('name', configText.validation.name).not().isEmpty(),
@@ -39,7 +42,25 @@ async function userRegistration(req, res) {
     user.password = await bcrypt.hash(password, salt);
     await user.save();
 
-    return res.status(200).json(user);
+    const payload = {
+      user: {
+        id: user.id,
+      },
+    };
+
+    const secret = config.get('jesonWebTokenSecret');
+    jwt.sign(
+      payload,
+      secret,
+      {
+        expiresIn: EXPIRES_IN,
+      },
+      (err, token) => {
+        if (err) throw err;
+
+        return res.status(200).json({ token });
+      }
+    );
   } catch (err) {
     const errors = {
       errors: [{ msg: configText.errors.serverError }],
