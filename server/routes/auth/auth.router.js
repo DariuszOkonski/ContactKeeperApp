@@ -1,4 +1,5 @@
 const express = require('express');
+const isUserAuthorized = require('../../middleware/auth');
 const { endpoints } = require('../../utils/endpoints');
 const {
   getLoggedInUser,
@@ -12,7 +13,7 @@ const authRouter = express.Router();
  * @desc    get Logged In User
  * @access  Private
  */
-authRouter.get(endpoints.slash, getLoggedInUser);
+authRouter.get(endpoints.slash, isUserAuthorized, getLoggedInUser);
 
 /**
  * @route   POST api/auth

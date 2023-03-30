@@ -16,8 +16,16 @@ const checkLogInUserData = [
  * @desc    get Logged In User
  * @access  Private
  */
-function getLoggedInUser(req, res) {
-  return res.status(200).json({ message: 'Get Logged In User' });
+async function getLoggedInUser(req, res) {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    return res.status(200).json(user);
+  } catch (error) {
+    const errors = {
+      errors: [{ msg: configText.errors.serverError }],
+    };
+    return res.status(500).json(errors);
+  }
 }
 
 /**

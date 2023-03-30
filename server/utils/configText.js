@@ -1,4 +1,7 @@
 const configText = {
+  token: {
+    name: 'x-auth-token',
+  },
   mongoDB: {
     connected: 'MongoDB is Connected...',
     notConnected: 'MongoDB NOT Connected...',
@@ -13,6 +16,8 @@ const configText = {
     serverError: 'Server Error',
     userAlreadyExists: 'User already exists',
     invalidCredentials: 'Invalid credentials',
+    noTokenAuthDenied: 'No token, authorization denied',
+    tokenNotValid: 'Token is not valid',
   },
 };
 

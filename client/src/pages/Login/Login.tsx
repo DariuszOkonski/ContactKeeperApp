@@ -22,6 +22,8 @@ function Login() {
     if (data && data.errors) {
       setErrors(data);
     }
+
+    console.log('!!! login data: ', data);
   }, [data, loading]);
 
   const onSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
