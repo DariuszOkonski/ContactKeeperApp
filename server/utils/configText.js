@@ -7,7 +7,7 @@ const configText = {
     name: 'Please add name',
     email: 'Please include a valid email',
     password: 'Please entar a password with 6 or more characters',
-    passwordRequired: 'Passwrd is required',
+    passwordRequired: 'Password is required',
   },
   errors: {
     serverError: 'Server Error',

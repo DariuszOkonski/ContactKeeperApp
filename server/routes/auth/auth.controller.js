@@ -8,7 +8,7 @@ const { EXPIRES_IN } = require('../../utils/constants');
 
 const checkLogInUserData = [
   check('email', configText.validation.email).isEmail(),
-  check('password', configText.validation.passwordRequired).exists(),
+  check('password', configText.validation.passwordRequired).not().isEmpty(),
 ];
 
 /**

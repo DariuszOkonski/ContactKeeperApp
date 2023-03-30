@@ -1,21 +1,39 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AccountTitle from '../../components/AccountTitle/AccountTitle';
 import Button from '../../components/Button/Button';
+import ErrorsList from '../../components/ErrorsList/ErrorsList';
 import Input from '../../components/Input/Input';
+import usePostRequest from '../../hooks/usePostRequest';
 import { ErrorMessage } from '../../interfaces/general';
 import configText from '../../utils/cofigText';
 import { errorTimeOut } from '../../utils/constants';
+import { endpointsExpress } from '../../utils/endpoints';
 import './Login.css';
 
 function Login() {
   const [showError, setShowError] = useState<boolean>(false);
-  const [dateError, setDataError] = useState<ErrorMessage | null>(null);
+  const [dataError, setDataError] = useState<ErrorMessage | null>(null);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
+  const { data, loading, postRequest } = usePostRequest();
+
+  useEffect(() => {
+    if (data && data.errors) {
+      setErrors(data);
+    }
+  }, [data, loading]);
+
   const onSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    console.log('onsubmit');
+    console.log(endpointsExpress.auth);
+
+    const body = {
+      email,
+      password,
+    };
+
+    await postRequest(endpointsExpress.auth, body);
   };
 
   const setErrors = (errors: ErrorMessage) => {
@@ -29,6 +47,7 @@ function Login() {
 
   return (
     <div className='login'>
+      {showError && <ErrorsList errors={dataError?.errors} />}
       <AccountTitle
         prefix={configText.accountLogin.prefix}
         postfix={configText.accountLogin.postfix}

@@ -25,10 +25,11 @@ function Register() {
       setErrors(data);
     }
 
-    console.log('!!! data: ', data);
+    console.log('!!! register data: ', data);
   }, [data, loading]);
 
   const onSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     if (password.length !== rePassword.length) {
       const errors: ErrorMessage = {
         errors: [{ msg: configText.errors.differentLenghts }],
