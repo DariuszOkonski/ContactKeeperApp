@@ -7,6 +7,7 @@ const {
   addContact,
   updateContact,
   deleteContact,
+  checkAddContact,
 } = require('./contacts.controller');
 const contactsRouter = express.Router();
 
@@ -22,7 +23,11 @@ contactsRouter.get(endpoints.slash, isUserAuthorized, getContacts);
  * @desc    Add new contact
  * @access  Private
  */
-contactsRouter.post(endpoints.slash, addContact);
+contactsRouter.post(
+  endpoints.slash,
+  [isUserAuthorized, checkAddContact],
+  addContact
+);
 
 /**
  * @route   PUT api/contacts/:id
