@@ -1,5 +1,7 @@
 const express = require('express');
 const { endpoints } = require('../../utils/endpoints');
+const isUserAuthorized = require('../../middleware/auth');
+
 const {
   getContacts,
   addContact,
@@ -13,7 +15,7 @@ const contactsRouter = express.Router();
  * @desc    Get all users contactes
  * @access  Private
  */
-contactsRouter.get(endpoints.slash, getContacts);
+contactsRouter.get(endpoints.slash, isUserAuthorized, getContacts);
 
 /**
  * @route   GET api/contacts
