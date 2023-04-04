@@ -1,5 +1,6 @@
 import { createContext } from 'react';
+import { initialState } from './contactState';
 
-const ContactContext = createContext(null);
+const ContactContext = createContext(initialState);
 
 export default ContactContext;

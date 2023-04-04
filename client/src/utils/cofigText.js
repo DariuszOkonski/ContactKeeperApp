@@ -1,4 +1,7 @@
 const configText = {
+  NoElement: {
+    text: 'No Contacts Found',
+  },
   addContact: {
     prefix: 'Add',
     postfix: 'Contact',

@@ -14,7 +14,7 @@ function Card(props: CardProps) {
   const { name, email, phone, type } = props;
 
   const typeClass =
-    type === PROFESSIONAL
+    type.toLowerCase() === PROFESSIONAL
       ? 'card__type card__type--success'
       : 'card__type card__type--primary';
 

@@ -4,7 +4,7 @@ export interface ActionType {
 }
 
 export interface Contact {
-  id: number;
+  id: string;
   name: string;
   email: string;
   phone: string;
