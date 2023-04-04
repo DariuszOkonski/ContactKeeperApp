@@ -1,3 +1,20 @@
+export interface ActionType {
+  type: string;
+  payload: any;
+}
+
+export interface Contact {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  type: string;
+}
+
+export interface InitialState {
+  contacts: Contact[];
+}
+
 interface ErrosList {
   msg: string;
   param?: string;
