@@ -34,14 +34,14 @@ contactsRouter.post(
  * @desc    update contact
  * @access  Private
  */
-contactsRouter.put(`${endpoints.slash}:id`, updateContact);
+contactsRouter.put(`${endpoints.slash}:id`, isUserAuthorized, updateContact);
 
 /**
  * @route   DELETE api/contacts/:id
  * @desc    delete contact
  * @access  Private
  */
-contactsRouter.delete(`${endpoints.slash}:id`, deleteContact);
+contactsRouter.delete(`${endpoints.slash}:id`, isUserAuthorized, deleteContact);
 
 module.exports = {
   contactsRouter,

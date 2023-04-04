@@ -19,6 +19,11 @@ const configText = {
     invalidCredentials: 'Invalid credentials',
     noTokenAuthDenied: 'No token, authorization denied',
     tokenNotValid: 'Token is not valid',
+    contactNotFound: 'Contact not found',
+    notAuthorized: 'Not authorized',
+  },
+  messages: {
+    contactRemoved: 'Contact removed',
   },
 };
 

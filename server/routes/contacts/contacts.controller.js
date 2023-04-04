@@ -49,12 +49,78 @@ async function addContact(req, res) {
   }
 }
 
-function updateContact(req, res) {
-  return res.status(200).json({ message: 'Update contact' });
+async function updateContact(req, res) {
+  const { name, email, phone, type } = req.body;
+
+  const contactFields = {};
+
+  if (name) contactFields.name = name;
+
+  if (email) contactFields.email = email;
+
+  if (phone) contactFields.phone = phone;
+
+  if (type) contactFields.type = type;
+
+  try {
+    let contact = await Contact.findById(req.params.id);
+
+    if (!contact) {
+      const errors = {
+        errors: [{ msg: configText.errors.contactNotFound }],
+      };
+      return res.status(404).json(errors);
+    }
+
+    if (contact.user.toString() !== req.user.id) {
+      const errors = {
+        errors: [{ msg: configText.errors.notAuthorized }],
+      };
+      return res.status(401).json(errors);
+    }
+
+    contact = await Contact.findByIdAndUpdate(
+      req.params.id,
+      { $set: contactFields },
+      { new: true }
+    );
+
+    return res.status(200).json({ contact });
+  } catch (error) {
+    const errors = {
+      errors: [{ msg: configText.errors.serverError }],
+    };
+    return res.status(500).json(errors);
+  }
 }
 
-function deleteContact(req, res) {
-  return res.status(200).json({ message: 'Delete contact' });
+async function deleteContact(req, res) {
+  try {
+    let contact = await Contact.findById(req.params.id);
+
+    if (!contact) {
+      const errors = {
+        errors: [{ msg: configText.errors.contactNotFound }],
+      };
+      return res.status(404).json(errors);
+    }
+
+    if (contact.user.toString() !== req.user.id) {
+      const errors = {
+        errors: [{ msg: configText.errors.notAuthorized }],
+      };
+      return res.status(401).json(errors);
+    }
+
+    await Contact.findByIdAndRemove(req.params.id);
+
+    return res.status(200).json({ msg: configText.messages.contactRemoved });
+  } catch (error) {
+    const errors = {
+      errors: [{ msg: configText.errors.serverError }],
+    };
+    return res.status(500).json(errors);
+  }
 }
 
 module.exports = {
