@@ -32,7 +32,9 @@ function Card(props: CardProps) {
         <Button clsName='btn btn-small btn-danger' text='Delete' />
       </div>
       <div className='card__right'>
-        <p className={typeClass}>{type}</p>
+        <p className={typeClass}>
+          {type.charAt(0).toUpperCase() + type.slice(1)}
+        </p>
       </div>
     </div>
   );

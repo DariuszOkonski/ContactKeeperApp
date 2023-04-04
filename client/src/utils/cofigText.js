@@ -15,6 +15,18 @@ const configText = {
     delete: 'Delete',
     clear: 'Clear',
   },
+  select: {
+    labelText: {
+      type: 'Type',
+    },
+    name: {
+      select: 'select',
+    },
+    options: {
+      professional: 'Professional',
+      personal: 'Personal',
+    },
+  },
   input: {
     labelText: {
       name: 'Name',
