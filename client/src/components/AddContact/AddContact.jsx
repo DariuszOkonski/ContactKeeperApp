@@ -19,7 +19,7 @@ const AddContact = () => {
   const [phone, setPhone] = useState('');
   const [type, setType] = useState(configText.select.options.professional);
 
-  const { addContact } = useContext(ContactContext);
+  const { addContact, state } = useContext(ContactContext);
 
   const { data, loading, postRequest } = usePostRequest();
 

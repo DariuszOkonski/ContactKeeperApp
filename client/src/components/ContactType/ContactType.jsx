@@ -7,7 +7,17 @@ import ContactContext from '../../context/contact/contactContext';
 import NoElement from '../NoElement/NoElement';
 
 function ContactType() {
-  const { state } = useContext(ContactContext);
+  const { state, deleteContact } = useContext(ContactContext);
+
+  console.log(state);
+
+  const onDelete = (id) => {
+    deleteContact(id);
+  };
+
+  const onEdit = (id) => {
+    console.log('editContact: ', id);
+  };
 
   return (
     <div className='contact-type'>
@@ -22,7 +32,9 @@ function ContactType() {
       )}
 
       {state.contacts.length > 0 &&
-        state.contacts.map((card) => <Card key={card.id} {...card} />)}
+        state.contacts.map((card) => (
+          <Card key={card.id} {...card} onDelete={onDelete} onEdit={onEdit} />
+        ))}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import Button from '../Button/Button';
 import './Card.css';
 
 function Card(props) {
-  const { name, email, phone, type } = props;
+  const { id, name, email, phone, type, onDelete, onEdit } = props;
 
   const typeClass =
     type.toLowerCase() === PROFESSIONAL
@@ -20,8 +20,16 @@ function Card(props) {
         <p className='card__text'>
           <i className='fas fa-phone'></i> {phone}
         </p>
-        <Button clsName='btn btn-small btn-information mr-small' text='Edit' />
-        <Button clsName='btn btn-small btn-danger' text='Delete' />
+        <Button
+          clsName='btn btn-small btn-information mr-small'
+          text='Edit'
+          onClick={() => onEdit(id)}
+        />
+        <Button
+          clsName='btn btn-small btn-danger'
+          text='Delete'
+          onClick={() => onDelete(id)}
+        />
       </div>
       <div className='card__right'>
         <p className={typeClass}>
