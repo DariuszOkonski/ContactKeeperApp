@@ -7,16 +7,18 @@ import ContactContext from '../../context/contact/contactContext';
 import NoElement from '../NoElement/NoElement';
 
 function ContactType() {
-  const { state, deleteContact } = useContext(ContactContext);
+  const { state, deleteContact, setCurrentContact, clearCurrentContact } =
+    useContext(ContactContext);
 
   console.log(state);
 
   const onDelete = (id) => {
     deleteContact(id);
+    clearCurrentContact();
   };
 
   const onEdit = (id) => {
-    console.log('editContact: ', id);
+    setCurrentContact(id);
   };
 
   return (

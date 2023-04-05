@@ -19,7 +19,8 @@ const AddContact = () => {
   const [phone, setPhone] = useState('');
   const [type, setType] = useState(configText.select.options.professional);
 
-  const { addContact, state } = useContext(ContactContext);
+  const { addContact, state, clearCurrentContact, updateCurrentContact } =
+    useContext(ContactContext);
 
   const { data, loading, postRequest } = usePostRequest();
 
@@ -28,7 +29,16 @@ const AddContact = () => {
     if (data && data.errors) {
       setErrors(data);
     }
-  }, [data, loading]);
+
+    if (state.current) {
+      setName(state.current.name);
+      setEmail(state.current.email);
+      setPhone(state.current.phone);
+      setType(state.current.type);
+    } else {
+      clearState();
+    }
+  }, [data, loading, state]);
 
   const setErrors = (errors) => {
     setDataError(errors);
@@ -56,9 +66,6 @@ const AddContact = () => {
       phone,
       type,
     };
-
-    console.log(body);
-
     await postRequest(endpointsExpress.contacts, body);
 
     if (data && !data.errors) {
@@ -70,7 +77,26 @@ const AddContact = () => {
 
   const onClear = (e) => {
     e.preventDefault();
-    console.log('onClear');
+    clearCurrentContact();
+    clearState();
+  };
+
+  const onEdit = (e) => {
+    e.preventDefault();
+    console.log('onEdit: ');
+
+    const body = {
+      id: state.current.id,
+      name,
+      email,
+      phone,
+      type,
+    };
+
+    console.log(body);
+    updateCurrentContact(body);
+    clearCurrentContact();
+    clearState();
   };
 
   return (
@@ -110,17 +136,27 @@ const AddContact = () => {
         onChange={(e) => setType(e.target.value)}
       />
 
-      <Button
-        clsName='btn btn-primary btn-wide mtb-small'
-        text={configText.buttons.addContact}
-        onClick={onSubmit}
-      />
+      {!state.current ? (
+        <Button
+          clsName='btn btn-primary btn-wide mtb-small'
+          text={configText.buttons.addContact}
+          onClick={onSubmit}
+        />
+      ) : (
+        <Button
+          clsName='btn btn-success btn-wide mtb-small'
+          text={configText.buttons.edit}
+          onClick={onEdit}
+        />
+      )}
 
-      <Button
-        clsName='btn btn-dark btn-wide'
-        text={configText.buttons.clear}
-        onClick={onClear}
-      />
+      {state.current && (
+        <Button
+          clsName='btn btn-dark btn-wide'
+          text={configText.buttons.clear}
+          onClick={onClear}
+        />
+      )}
     </div>
   );
 };

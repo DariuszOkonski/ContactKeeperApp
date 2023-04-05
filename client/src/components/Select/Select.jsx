@@ -1,11 +1,16 @@
 import configText from '../../utils/cofigText';
 import './Select.css';
 
-function Select({ name, labelText, onChange }) {
+function Select({ name, labelText, onChange, value }) {
   return (
     <div className='select'>
       <label className='select__label'>{labelText}</label>
-      <select className='select__change' name={name} onChange={onChange}>
+      <select
+        className='select__change'
+        value={value}
+        name={name}
+        onChange={onChange}
+      >
         <option value={configText.select.options.professional}>
           {configText.select.options.professional}
         </option>
