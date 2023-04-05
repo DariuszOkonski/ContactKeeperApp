@@ -1,14 +1,7 @@
 import configText from '../../utils/cofigText';
 import './Select.css';
 
-interface SelectProps {
-  name: string;
-  labelText: string;
-  value?: string | number;
-  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-}
-
-function Select({ name, labelText, onChange }: SelectProps) {
+function Select({ name, labelText, onChange }) {
   return (
     <div className='select'>
       <label className='select__label'>{labelText}</label>

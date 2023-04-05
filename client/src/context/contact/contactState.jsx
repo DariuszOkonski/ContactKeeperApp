@@ -1,14 +1,8 @@
-import React, { useReducer } from 'react';
+import { useReducer } from 'react';
 import { contactReducer } from './contactReducer';
-import { ADD_CONTACT } from '../types';
-import { InitialState } from '../../interfaces/general';
 import ContactContext from './contactContext';
 
-interface ContactStateProps {
-  children: React.ReactNode;
-}
-
-export const initialState: InitialState = {
+export const initialState = {
   contacts: [
     {
       id: '1',
@@ -34,11 +28,15 @@ export const initialState: InitialState = {
   ],
 };
 
-const ContactStateProvider = (props: ContactStateProps) => {
+const ContactStateProvider = (props) => {
   const [state, dispatch] = useReducer(contactReducer, initialState);
 
+  const addContact = (contact) => {
+    console.log('addContact: ', contact);
+  };
+
   return (
-    <ContactContext.Provider value={state}>
+    <ContactContext.Provider value={{ state, addContact }}>
       {props.children}
     </ContactContext.Provider>
   );

@@ -4,17 +4,16 @@ import Button from '../../components/Button/Button';
 import ErrorsList from '../../components/ErrorsList/ErrorsList';
 import Input from '../../components/Input/Input';
 import usePostRequest from '../../hooks/usePostRequest';
-import { ErrorMessage } from '../../interfaces/general';
 import configText from '../../utils/cofigText';
 import { errorTimeOut } from '../../utils/constants';
 import { endpointsExpress } from '../../utils/endpoints';
 import './Login.css';
 
 function Login() {
-  const [showError, setShowError] = useState<boolean>(false);
-  const [dataError, setDataError] = useState<ErrorMessage | null>(null);
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [showError, setShowError] = useState(false);
+  const [dataError, setDataError] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const { data, loading, postRequest } = usePostRequest();
 
@@ -26,7 +25,7 @@ function Login() {
     console.log('!!! login data: ', data);
   }, [data, loading]);
 
-  const onSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     console.log(endpointsExpress.auth);
 
@@ -38,7 +37,7 @@ function Login() {
     await postRequest(endpointsExpress.auth, body);
   };
 
-  const setErrors = (errors: ErrorMessage) => {
+  const setErrors = (errors) => {
     setDataError(errors);
     setShowError(true);
     setTimeout(() => {
@@ -59,18 +58,14 @@ function Login() {
         name={configText.input.name.email}
         type={configText.input.type.email}
         value={email}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setEmail(e.target.value)
-        }
+        onChange={(e) => setEmail(e.target.value)}
       />
       <Input
         labelText={configText.input.labelText.password}
         name={configText.input.name.password}
         type={configText.input.type.password}
         value={password}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setPassword(e.target.value)
-        }
+        onChange={(e) => setPassword(e.target.value)}
       />
 
       <Button

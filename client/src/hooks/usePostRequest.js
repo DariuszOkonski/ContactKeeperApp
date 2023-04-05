@@ -1,16 +1,11 @@
 import { useState } from 'react';
-import { ErrorMessage, RegisterUser } from '../interfaces/general';
 import configText from '../utils/cofigText';
 
 const usePostRequest = () => {
-  const [data, setData] = useState<ErrorMessage | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const postRequest = async (
-    url: string,
-    body: RegisterUser,
-    token: string = ''
-  ) => {
+  const postRequest = async (url, body, token) => {
     setLoading(true);
 
     try {

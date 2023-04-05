@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import { ErrorMessage } from '../interfaces/general';
 import configText from '../utils/cofigText';
 
 const useGetRequest = () => {
-  const [data, setData] = useState<any>(null);
-  const [error, setError] = useState<ErrorMessage | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const getRequest = async (url: string) => {
+  const getRequest = async (url) => {
     setLoading(true);
     setError(null);
     try {
@@ -24,14 +23,12 @@ const useGetRequest = () => {
       const data = await response.json();
       setData(data);
     } catch (err) {
-      let errorMessage: ErrorMessage = {
+      let errorMessage = {
         text: configText.errors.unknownError,
       };
-      if (err instanceof Error) {
-        errorMessage = {
-          text: err.message,
-        };
-      }
+      errorMessage = {
+        text: err.message,
+      };
       setError(errorMessage);
     } finally {
       setLoading(false);

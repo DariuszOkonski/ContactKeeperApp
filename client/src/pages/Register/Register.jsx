@@ -4,19 +4,18 @@ import Button from '../../components/Button/Button';
 import ErrorsList from '../../components/ErrorsList/ErrorsList';
 import Input from '../../components/Input/Input';
 import usePostRequest from '../../hooks/usePostRequest';
-import { ErrorMessage } from '../../interfaces/general';
 import configText from '../../utils/cofigText';
 import { errorTimeOut } from '../../utils/constants';
 import { endpointsExpress } from '../../utils/endpoints';
 import './Register.css';
 
 function Register() {
-  const [showError, setShowError] = useState<boolean>(false);
-  const [dataError, setDataError] = useState<ErrorMessage | null>(null);
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [rePassword, setRePassword] = useState<string>('');
+  const [showError, setShowError] = useState(false);
+  const [dataError, setDataError] = useState(null);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [rePassword, setRePassword] = useState('');
 
   const { data, loading, postRequest } = usePostRequest();
 
@@ -28,17 +27,17 @@ function Register() {
     console.log('!!! register data: ', data);
   }, [data, loading]);
 
-  const onSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (password.length !== rePassword.length) {
-      const errors: ErrorMessage = {
+      const errors = {
         errors: [{ msg: configText.errors.differentLenghts }],
       };
       setErrors(errors);
     }
 
     if (password !== rePassword) {
-      const errors: ErrorMessage = {
+      const errors = {
         errors: [{ msg: configText.errors.different }],
       };
       setErrors(errors);
@@ -53,7 +52,7 @@ function Register() {
     await postRequest(endpointsExpress.users, body);
   };
 
-  const setErrors = (errors: ErrorMessage) => {
+  const setErrors = (errors) => {
     setDataError(errors);
     setShowError(true);
     setTimeout(() => {
@@ -75,36 +74,28 @@ function Register() {
           name={configText.input.name.name}
           type={configText.input.type.text}
           value={name}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setName(e.target.value)
-          }
+          onChange={(e) => setName(e.target.value)}
         />
         <Input
           labelText={configText.input.labelText.email}
           name={configText.input.name.email}
           type={configText.input.type.email}
           value={email}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setEmail(e.target.value)
-          }
+          onChange={(e) => setEmail(e.target.value)}
         />
         <Input
           labelText={configText.input.labelText.password}
           name={configText.input.name.password}
           type={configText.input.type.password}
           value={password}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setPassword(e.target.value)
-          }
+          onChange={(e) => setPassword(e.target.value)}
         />
         <Input
           labelText={configText.input.labelText.confirmPassword}
           name={configText.input.name.rePassword}
           type={configText.input.type.password}
           value={rePassword}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setRePassword(e.target.value)
-          }
+          onChange={(e) => setRePassword(e.target.value)}
         />
         <Button
           clsName='btn btn-primary btn-wide'

@@ -17,7 +17,7 @@ const configText = {
   },
   select: {
     labelText: {
-      type: 'Type',
+      type: 'Contact Type',
     },
     name: {
       select: 'select',

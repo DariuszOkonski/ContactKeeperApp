@@ -2,15 +2,7 @@ import { PROFESSIONAL } from '../../utils/constants';
 import Button from '../Button/Button';
 import './Card.css';
 
-interface CardProps {
-  id: string;
-  name: string;
-  email: string;
-  phone: string;
-  type: string;
-}
-
-function Card(props: CardProps) {
+function Card(props) {
   const { name, email, phone, type } = props;
 
   const typeClass =

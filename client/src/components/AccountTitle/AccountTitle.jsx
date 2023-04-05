@@ -1,11 +1,6 @@
 import './AccountTitle.css';
 
-interface AccountTitleProps {
-  prefix: string;
-  postfix: string;
-}
-
-const AccountTitle = ({ prefix, postfix }: AccountTitleProps) => {
+const AccountTitle = ({ prefix, postfix }) => {
   return (
     <div className='account-title'>
       <h1>

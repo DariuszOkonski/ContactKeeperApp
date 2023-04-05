@@ -1,7 +1,6 @@
-import { ErrorMessage } from '../../interfaces/general';
 import './ErrorsList.css';
 
-function ErrorsList(props: ErrorMessage) {
+function ErrorsList(props) {
   if (props.errors === undefined) return null;
   return (
     <div>

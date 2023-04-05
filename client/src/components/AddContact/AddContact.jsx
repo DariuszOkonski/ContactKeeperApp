@@ -1,35 +1,37 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import configText from '../../utils/cofigText';
 import AccountTitle from '../AccountTitle/AccountTitle';
 import Button from '../Button/Button';
 import Input from '../Input/Input';
 import './AddContact.css';
-import { ErrorMessage } from '../../interfaces/general';
 import ErrorsList from '../ErrorsList/ErrorsList';
 import usePostRequest from '../../hooks/usePostRequest';
 import { errorTimeOut } from '../../utils/constants';
 import { endpointsExpress } from '../../utils/endpoints';
 import Select from '../Select/Select';
+import ContactContext from '../../context/contact/contactContext';
 
 const AddContact = () => {
-  const [showError, setShowError] = useState<boolean>(false);
-  const [dataError, setDataError] = useState<ErrorMessage | null>(null);
-  const [name, setName] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [phone, setPhone] = useState<string>('');
-  const [type, setType] = useState<string>(
-    configText.select.options.professional
-  );
+  const [showError, setShowError] = useState(false);
+  const [dataError, setDataError] = useState(null);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [type, setType] = useState(configText.select.options.professional);
+
+  const contactContext = useContext(ContactContext);
+  console.log(contactContext);
 
   const { data, loading, postRequest } = usePostRequest();
 
   useEffect(() => {
+    console.log('addContact: ', data);
     if (data && data.errors) {
       setErrors(data);
     }
   }, [data, loading]);
 
-  const setErrors = (errors: ErrorMessage) => {
+  const setErrors = (errors) => {
     setDataError(errors);
     setShowError(true);
     setTimeout(() => {
@@ -38,12 +40,25 @@ const AddContact = () => {
     }, errorTimeOut);
   };
 
-  const onSubmit = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     console.log(endpointsExpress.contacts);
+
+    const body = {
+      name,
+      email,
+      phone,
+      type,
+    };
+
+    console.log(body);
+
+    await postRequest(endpointsExpress.contacts, body);
+
+    // contactContext
   };
 
-  const onClear = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onClear = (e) => {
     e.preventDefault();
     console.log('onClear');
   };
@@ -61,36 +76,28 @@ const AddContact = () => {
         name={configText.input.name.name}
         type={configText.input.type.text}
         value={name}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setName(e.target.value)
-        }
+        onChange={(e) => setName(e.target.value)}
       />
       <Input
         labelText={configText.input.labelText.email}
         name={configText.input.name.email}
         type={configText.input.type.email}
         value={email}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setEmail(e.target.value)
-        }
+        onChange={(e) => setEmail(e.target.value)}
       />
       <Input
         labelText={configText.input.labelText.phone}
         name={configText.input.name.phone}
         type={configText.input.type.text}
         value={phone}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setPhone(e.target.value)
-        }
+        onChange={(e) => setPhone(e.target.value)}
       />
 
       <Select
         labelText={configText.select.labelText.type}
         name={configText.select.name.select}
         value={type}
-        onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-          setType(e.target.value)
-        }
+        onChange={(e) => setType(e.target.value)}
       />
 
       <Button

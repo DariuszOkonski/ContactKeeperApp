@@ -7,7 +7,7 @@ import ContactContext from '../../context/contact/contactContext';
 import NoElement from '../NoElement/NoElement';
 
 function ContactType() {
-  const { contacts } = useContext(ContactContext);
+  const { state } = useContext(ContactContext);
 
   return (
     <div className='contact-type'>
@@ -17,10 +17,12 @@ function ContactType() {
         type={configText.input.type.text}
       />
 
-      {contacts.length === 0 && <NoElement text={configText.NoElement.text} />}
+      {state.contacts.length === 0 && (
+        <NoElement text={configText.NoElement.text} />
+      )}
 
-      {contacts.length > 0 &&
-        contacts.map((card) => <Card key={card.id} {...card} />)}
+      {state.contacts.length > 0 &&
+        state.contacts.map((card) => <Card key={card.id} {...card} />)}
     </div>
   );
 }

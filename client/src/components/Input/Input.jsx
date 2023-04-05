@@ -1,14 +1,6 @@
 import './Input.css';
 
-interface InputProps {
-  type: string;
-  name: string;
-  labelText: string;
-  value?: string | number;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const Input = ({ type, name, labelText, value, onChange }: InputProps) => {
+const Input = ({ type, name, labelText, value, onChange }) => {
   return (
     <div className='input'>
       <label className='input__label' htmlFor={name}>

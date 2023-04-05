@@ -1,10 +1,6 @@
 import './NoElement.css';
 
-interface NoElementProps {
-  text: string;
-}
-
-function NoElement({ text }: NoElementProps) {
+function NoElement({ text }) {
   return (
     <div className='no-element'>
       <span>{text}</span>
