@@ -25,7 +25,7 @@ const AddContact = () => {
   const { data, loading, postRequest } = usePostRequest();
 
   useEffect(() => {
-    console.log('addContact: ', data);
+    // console.log('addContact: ', data);
     if (data && data.errors) {
       setErrors(data);
     }
@@ -58,7 +58,7 @@ const AddContact = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(endpointsExpress.contacts);
+    // console.log(endpointsExpress.contacts);
 
     const body = {
       name,
@@ -69,7 +69,7 @@ const AddContact = () => {
     await postRequest(endpointsExpress.contacts, body);
 
     if (data && !data.errors) {
-      console.log('Add Contact ==========');
+      // console.log('Add Contact ==========');
       addContact(body);
       clearState();
     }
@@ -83,7 +83,7 @@ const AddContact = () => {
 
   const onEdit = (e) => {
     e.preventDefault();
-    console.log('onEdit: ');
+    // console.log('onEdit: ');
 
     const body = {
       id: state.current.id,
@@ -93,7 +93,7 @@ const AddContact = () => {
       type,
     };
 
-    console.log(body);
+    // console.log(body);
     updateCurrentContact(body);
     clearCurrentContact();
     clearState();
@@ -103,7 +103,11 @@ const AddContact = () => {
     <div className='add-contact'>
       {showError && <ErrorsList errors={dataError?.errors} />}
       <AccountTitle
-        prefix={configText.addContact.prefix}
+        prefix={
+          !state.current
+            ? configText.addContact.prefixAdd
+            : configText.addContact.prefixEdit
+        }
         postfix={configText.addContact.postfix}
       />
 

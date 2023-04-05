@@ -33,6 +33,13 @@ export const initialState = {
       phone: '333-333-333',
       type: 'Professional',
     },
+    {
+      id: '4',
+      name: 'Samuel L Jackson',
+      email: 'samuel@gmail.com',
+      phone: '335-355-333',
+      type: 'Personal',
+    },
   ],
   current: null,
 };

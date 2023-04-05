@@ -22,7 +22,7 @@ const usePostRequest = () => {
       const data = await response.json();
       setData(data);
     } catch (err) {
-      console.log('!!! err: ', err);
+      // console.log('!!! err: ', err);
       let errors = [{ msg: configText.errors.unknownError }];
       setData({ ...data, errors });
     } finally {

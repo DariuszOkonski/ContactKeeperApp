@@ -27,7 +27,7 @@ function Login() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(endpointsExpress.auth);
+    // console.log(endpointsExpress.auth);
 
     const body = {
       email,

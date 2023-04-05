@@ -3,7 +3,8 @@ const configText = {
     text: 'No Contacts Found',
   },
   addContact: {
-    prefix: 'Add',
+    prefixEdit: 'Edit',
+    prefixAdd: 'Add',
     postfix: 'Contact',
   },
   contactType: {},
