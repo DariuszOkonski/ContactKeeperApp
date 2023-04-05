@@ -19,8 +19,7 @@ const AddContact = () => {
   const [phone, setPhone] = useState('');
   const [type, setType] = useState(configText.select.options.professional);
 
-  const contactContext = useContext(ContactContext);
-  console.log(contactContext);
+  const { addContact } = useContext(ContactContext);
 
   const { data, loading, postRequest } = usePostRequest();
 
@@ -40,6 +39,13 @@ const AddContact = () => {
     }, errorTimeOut);
   };
 
+  const clearState = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setType(configText.select.options.professional);
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log(endpointsExpress.contacts);
@@ -55,7 +61,11 @@ const AddContact = () => {
 
     await postRequest(endpointsExpress.contacts, body);
 
-    // contactContext
+    if (data && !data.errors) {
+      console.log('Add Contact ==========');
+      addContact(body);
+      clearState();
+    }
   };
 
   const onClear = (e) => {

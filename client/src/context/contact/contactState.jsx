@@ -1,6 +1,8 @@
 import { useReducer } from 'react';
 import { contactReducer } from './contactReducer';
 import ContactContext from './contactContext';
+import { v4 } from 'uuid';
+import { ADD_CONTACT } from '../types';
 
 export const initialState = {
   contacts: [
@@ -32,7 +34,12 @@ const ContactStateProvider = (props) => {
   const [state, dispatch] = useReducer(contactReducer, initialState);
 
   const addContact = (contact) => {
-    console.log('addContact: ', contact);
+    contact.id = v4();
+
+    dispatch({
+      type: ADD_CONTACT,
+      payload: contact,
+    });
   };
 
   return (
