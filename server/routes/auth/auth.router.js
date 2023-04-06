@@ -13,6 +13,7 @@ const authRouter = express.Router();
  * @desc    get Logged In User
  * @access  Private
  */
+// TODO - TO REMOVE
 authRouter.get(endpoints.slash, isUserAuthorized, getLoggedInUser);
 
 /**

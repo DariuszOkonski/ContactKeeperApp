@@ -76,7 +76,14 @@ async function logInUser(req, res) {
       (err, token) => {
         if (err) throw err;
 
-        return res.status(200).json({ token });
+        const loggedUser = {
+          token,
+          date: user.date,
+          email: user.email,
+          name: user.name,
+        };
+
+        return res.status(200).json({ loggedUser });
       }
     );
   } catch (err) {

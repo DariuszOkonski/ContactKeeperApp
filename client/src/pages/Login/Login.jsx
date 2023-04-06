@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AccountTitle from '../../components/AccountTitle/AccountTitle';
 import Button from '../../components/Button/Button';
 import ErrorsList from '../../components/ErrorsList/ErrorsList';
@@ -6,8 +6,10 @@ import Input from '../../components/Input/Input';
 import usePostRequest from '../../hooks/usePostRequest';
 import configText from '../../utils/cofigText';
 import { errorTimeOut } from '../../utils/constants';
-import { endpointsExpress } from '../../utils/endpoints';
+import { endpoints, endpointsExpress } from '../../utils/endpoints';
 import './Login.css';
+import AuthContext from '../../context/auth/authContext';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [showError, setShowError] = useState(false);
@@ -16,18 +18,29 @@ function Login() {
   const [password, setPassword] = useState('');
 
   const { data, loading, postRequest } = usePostRequest();
+  const { loginUser, loginFailed } = useContext(AuthContext);
+  let navigate = useNavigate();
 
   useEffect(() => {
     if (data && data.errors) {
       setErrors(data);
+      loginFailed();
     }
 
     console.log('!!! login data: ', data);
 
-    if (data && data.token) {
-      localStorage.setItem(configText.auth.token, data.token);
+    if (data && data.loggedUser && data.loggedUser.token) {
+      loginUser(data.loggedUser);
+      navigate(endpoints.contacts);
     }
   }, [data, loading]);
+
+  // const GetRequest = async (token) => {
+  //   const user = await useGetRequest(endpointsExpress.auth, token);
+  //   console.log(user);
+
+  //   return user;
+  // };
 
   const onSubmit = async (e) => {
     e.preventDefault();

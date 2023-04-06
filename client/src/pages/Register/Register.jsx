@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AccountTitle from '../../components/AccountTitle/AccountTitle';
 import Button from '../../components/Button/Button';
 import ErrorsList from '../../components/ErrorsList/ErrorsList';
@@ -6,8 +6,10 @@ import Input from '../../components/Input/Input';
 import usePostRequest from '../../hooks/usePostRequest';
 import configText from '../../utils/cofigText';
 import { errorTimeOut } from '../../utils/constants';
-import { endpointsExpress } from '../../utils/endpoints';
+import { endpoints, endpointsExpress } from '../../utils/endpoints';
 import './Register.css';
+import AuthContext from '../../context/auth/authContext';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
   const [showError, setShowError] = useState(false);
@@ -18,15 +20,19 @@ function Register() {
   const [rePassword, setRePassword] = useState('');
 
   const { data, loading, postRequest } = usePostRequest();
+  const { registerUser, registerFailed } = useContext(AuthContext);
+  let navigate = useNavigate();
 
   useEffect(() => {
     if (data && data.errors) {
       setErrors(data);
+      registerFailed();
     }
 
     console.log('!!! register data: ', data);
     if (data && data.token) {
-      localStorage.setItem(configText.auth.token, data.token);
+      registerUser(data.token);
+      navigate(endpoints.contacts);
     }
   }, [data, loading]);
 

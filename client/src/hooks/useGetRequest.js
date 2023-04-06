@@ -6,14 +6,16 @@ const useGetRequest = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const getRequest = async (url) => {
+  const getRequest = async (url, token) => {
     setLoading(true);
     setError(null);
     try {
-      debugger;
       const response = await fetch(url, {
         method: 'GET',
-        headers: { origin: '*' },
+        headers: {
+          origin: '*',
+          'x-auth-token': token,
+        },
       });
 
       if (!response.ok) {
