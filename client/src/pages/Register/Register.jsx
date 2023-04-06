@@ -25,6 +25,9 @@ function Register() {
     }
 
     console.log('!!! register data: ', data);
+    if (data && data.token) {
+      localStorage.setItem(configText.auth.token, data.token);
+    }
   }, [data, loading]);
 
   const onSubmit = async (e) => {
@@ -34,6 +37,7 @@ function Register() {
         errors: [{ msg: configText.errors.differentLenghts }],
       };
       setErrors(errors);
+      return;
     }
 
     if (password !== rePassword) {
@@ -41,6 +45,7 @@ function Register() {
         errors: [{ msg: configText.errors.different }],
       };
       setErrors(errors);
+      return;
     }
 
     const body = {

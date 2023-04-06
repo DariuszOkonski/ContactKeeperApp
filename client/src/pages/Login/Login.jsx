@@ -23,11 +23,14 @@ function Login() {
     }
 
     console.log('!!! login data: ', data);
+
+    if (data && data.token) {
+      localStorage.setItem(configText.auth.token, data.token);
+    }
   }, [data, loading]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // console.log(endpointsExpress.auth);
 
     const body = {
       email,

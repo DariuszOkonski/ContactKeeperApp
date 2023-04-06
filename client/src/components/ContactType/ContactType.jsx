@@ -10,27 +10,24 @@ function ContactType() {
   const [find, setFind] = useState('');
   const [foundContacts, setFoundContacts] = useState([]);
 
-  const { state, deleteContact, setCurrentContact, clearCurrentContact } =
-    useContext(ContactContext);
+  const {
+    state,
+    deleteContact,
+    setCurrentContact,
+    clearCurrentContact,
+    filterContacts,
+  } = useContext(ContactContext);
 
   useEffect(() => {
-    setFoundContacts(state.contacts);
-  }, [state.contacts]);
-
-  useEffect(() => {
-    let foundContactsArray = [];
-    if (find) {
-      foundContactsArray = state.contacts.filter((contact) => {
-        if (contact.name.toLowerCase().includes(find.toLowerCase()))
-          return contact;
-      });
-    } else {
+    if (!state.filtered) {
       setFoundContacts(state.contacts);
+    } else {
+      setFoundContacts(state.filtered);
     }
+  }, [state]);
 
-    if (find) {
-      setFoundContacts(foundContactsArray);
-    }
+  useEffect(() => {
+    filterContacts(find);
   }, [find]);
 
   const onDelete = (id) => {

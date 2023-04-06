@@ -5,7 +5,9 @@ import { v4 } from 'uuid';
 import {
   ADD_CONTACT,
   CLEAR_CURRENT,
+  CLEAR_FILTER,
   DELETE_CONTACT,
+  FILTER_CONTACT,
   SET_CURRENT,
   UPDATE_CONTACT,
 } from '../types';
@@ -42,6 +44,7 @@ export const initialState = {
     },
   ],
   current: null,
+  filtered: null,
 };
 
 const ContactStateProvider = (props) => {
@@ -83,6 +86,19 @@ const ContactStateProvider = (props) => {
     });
   };
 
+  const filterContacts = (text) => {
+    dispatch({
+      type: FILTER_CONTACT,
+      payload: text,
+    });
+  };
+
+  const clearFilter = () => {
+    dispatch({
+      type: CLEAR_FILTER,
+    });
+  };
+
   return (
     <ContactContext.Provider
       value={{
@@ -92,6 +108,8 @@ const ContactStateProvider = (props) => {
         setCurrentContact,
         clearCurrentContact,
         updateCurrentContact,
+        filterContacts,
+        clearFilter,
       }}
     >
       {props.children}

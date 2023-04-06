@@ -99,6 +99,9 @@ const configText = {
     differentLenghts: 'Passwords have different lenghts',
     different: 'Passwords are different',
   },
+  auth: {
+    token: 'contact-keeper-token',
+  },
 };
 
 export default configText;
