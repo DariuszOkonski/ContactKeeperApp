@@ -14,6 +14,11 @@
   margin: 0 0 0 10px;
 }
 
+.contacts__left-column,
+.contacts__right-column {
+  width: 50%;
+}
+
 .card__text {
   margin: 10px 0;
   color: var(--black-color);
@@ -35,5 +40,10 @@
 
   .contacts__left-column {
     margin-bottom: 20px;
+  }
+
+  .contacts__left-column,
+  .contacts__right-column {
+    width: 100%;
   }
 }
