@@ -2,7 +2,7 @@
 
 # Contact Keeper App
 
-It's a simple CRUD application for keeping peoples contacts.
+It's a simple CRUD application for keeping people's contacts.
 
 ## FRONTEND technologies
 
