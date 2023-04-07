@@ -1,3 +1,5 @@
+![image](client/public/gitImg/main.png)
+
 ## FRONTEND technologies
 
 ## BACKEND technologies
