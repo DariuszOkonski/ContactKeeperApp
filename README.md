@@ -18,7 +18,7 @@ It's a simple CRUD application for keeping people's contacts.
 - config
 - cors
 - express
-- express-calidator
+- express-validator
 - mongoose
 - mongodb
 - nodemon
