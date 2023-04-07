@@ -5,10 +5,15 @@ import Input from '../Input/Input';
 import './ContactType.css';
 import ContactContext from '../../context/contact/contactContext';
 import NoElement from '../NoElement/NoElement';
+import { endpointsExpress } from '../../utils/endpoints';
+import AuthContext from '../../context/auth/authContext';
 
 function ContactType() {
   const [find, setFind] = useState('');
   const [foundContacts, setFoundContacts] = useState([]);
+
+  const { authState } = useContext(AuthContext);
+  const { token } = authState;
 
   const {
     contactState,
@@ -30,14 +35,41 @@ function ContactType() {
     filterContacts(find);
   }, [find]);
 
-  const onDelete = (id) => {
-    deleteContact(id);
-    clearCurrentContact();
-    clearInput();
+  const onDelete = (_id) => {
+    console.log('onDeleteToken: ', token);
+
+    if (token) {
+      deleteContact(_id);
+      console.log('delete Contact: ', _id);
+      console.log(endpointsExpress.deleteContact(_id));
+
+      deleteRequest(endpointsExpress.deleteContact(_id), token);
+      clearCurrentContact();
+      clearInput();
+    }
   };
 
-  const onEdit = (id) => {
-    setCurrentContact(id);
+  const deleteRequest = async (url, token) => {
+    try {
+      const response = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+          origin: '*',
+          'Content-Type': 'application/json',
+          [configText.auth.token]: token,
+        },
+      });
+
+      const data = await response.json();
+      console.log('DELETED');
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const onEdit = (_id) => {
+    setCurrentContact(_id);
   };
 
   const clearInput = () => {

@@ -30,7 +30,7 @@ const ContactStateProvider = (props) => {
   };
 
   const addContact = (contact) => {
-    contact.id = v4();
+    contact._id = v4();
 
     dispatch({
       type: ADD_CONTACT,
@@ -38,17 +38,17 @@ const ContactStateProvider = (props) => {
     });
   };
 
-  const deleteContact = (id) => {
+  const deleteContact = (_id) => {
     dispatch({
       type: DELETE_CONTACT,
-      payload: id,
+      payload: _id,
     });
   };
 
-  const setCurrentContact = (id) => {
+  const setCurrentContact = (_id) => {
     dispatch({
       type: SET_CURRENT,
-      payload: id,
+      payload: _id,
     });
   };
 

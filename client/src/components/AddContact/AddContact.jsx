@@ -130,7 +130,7 @@ const AddContact = () => {
     // console.log('onEdit: ');
 
     const body = {
-      id: contactState.current.id,
+      _id: contactState.current._id,
       name,
       email,
       phone,

@@ -18,7 +18,7 @@ export const endpointsExpress = {
   localhost: baseApi,
   auth: `${baseApi}${baseAuth}`,
   contacts: `${baseApi}${baseContacts}`,
-  updateContacts: (id) => `${baseApi}${baseContacts}/:${id}`,
-  deleteContact: (id) => `${baseApi}${baseContacts}/:${id}`,
+  updateContacts: (_id) => `${baseApi}${baseContacts}/${_id}`,
+  deleteContact: (_id) => `${baseApi}${baseContacts}/${_id}`,
   users: `${baseApi}${baseUsers}`,
 };

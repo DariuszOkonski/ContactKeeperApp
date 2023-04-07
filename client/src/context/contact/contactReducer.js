@@ -30,21 +30,21 @@ export const contactReducer = (state, action) => {
       return {
         ...state,
         contacts: state.contacts.filter(
-          (contact) => contact.id !== action.payload
+          (contact) => contact._id !== action.payload
         ),
         filtered: state.filtered.filter(
-          (contact) => contact.id !== action.payload
+          (contact) => contact._id !== action.payload
         ),
       };
     case UPDATE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.map((contact) => {
-          if (contact.id === action.payload.id) return action.payload;
+          if (contact._id === action.payload._id) return action.payload;
           return contact;
         }),
         filtered: state.filtered.map((contact) => {
-          if (contact.id === action.payload.id) return action.payload;
+          if (contact._id === action.payload._id) return action.payload;
           return contact;
         }),
       };
@@ -52,7 +52,7 @@ export const contactReducer = (state, action) => {
       return {
         ...state,
         current: state.contacts.filter(
-          (contact) => contact.id === action.payload
+          (contact) => contact._id === action.payload
         )[0],
       };
     case CLEAR_CURRENT:
