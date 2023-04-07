@@ -11,16 +11,20 @@ const Home = () => {
 
   return (
     <div className='home'>
-      {!isAuthenticated && (
-        <div className='home__buttons'>
-          <Link className='btn btn-main' to={endpoints.register}>
-            {configText.home.buttons.register}
-          </Link>
-          <Link className='btn btn-main' to={endpoints.login}>
-            {configText.home.buttons.login}
-          </Link>
-        </div>
-      )}
+      <div className='home__buttons'>
+        {!isAuthenticated ? (
+          <>
+            <Link className='btn btn-main' to={endpoints.register}>
+              {configText.home.buttons.register}
+            </Link>
+            <Link className='btn btn-main' to={endpoints.login}>
+              {configText.home.buttons.login}
+            </Link>
+          </>
+        ) : (
+          <h1 className='home__header'>Contact Keeper App</h1>
+        )}
+      </div>
     </div>
   );
 };
