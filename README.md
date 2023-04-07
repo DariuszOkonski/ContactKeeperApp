@@ -1,3 +1,9 @@
-# FRONTEND
+## FRONTEND technologies
 
-# BACKEND
+## BACKEND technologies
+
+## Run App
+
+to install dependencies
+npm run setup:dep
+npm run start:dev
