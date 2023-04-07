@@ -31,7 +31,7 @@ function Login() {
 
     if (data && data.loggedUser && data.loggedUser.token) {
       loginUser(data.loggedUser);
-      navigate(endpoints.contacts);
+      // navigate(endpoints.contacts);
     }
   }, [data, loading]);
 
