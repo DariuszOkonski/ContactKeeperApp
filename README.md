@@ -40,6 +40,8 @@ It's a simple CRUD application for keeping people's contacts.
 
 ### npm run setup:dep
 
+- wait till node_modules show up in main folder as well as in server and client folder
+
 - than start application by running command:
 
 ### npm run start:dev
