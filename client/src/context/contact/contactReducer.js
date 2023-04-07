@@ -6,6 +6,7 @@ import {
   UPDATE_CONTACT,
   FILTER_CONTACT,
   CLEAR_FILTER,
+  ADD_ALL_CONTACTS,
 } from '../types';
 
 export const contactReducer = (state, action) => {
@@ -13,6 +14,12 @@ export const contactReducer = (state, action) => {
   // console.log(state);
   // console.log(action);
   switch (action.type) {
+    case ADD_ALL_CONTACTS:
+      return {
+        ...state,
+        contacts: [...action.payload.contacts],
+        filtered: [...action.payload.contacts],
+      };
     case ADD_CONTACT:
       return {
         ...state,

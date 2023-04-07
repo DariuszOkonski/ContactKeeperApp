@@ -61,7 +61,7 @@ function ContactType() {
       {foundContacts &&
         foundContacts.length > 0 &&
         foundContacts.map((card) => (
-          <Card key={card.id} {...card} onDelete={onDelete} onEdit={onEdit} />
+          <Card key={card._id} {...card} onDelete={onDelete} onEdit={onEdit} />
         ))}
     </div>
   );

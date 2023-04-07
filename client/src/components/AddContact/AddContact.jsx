@@ -25,13 +25,25 @@ const AddContact = () => {
     contactState,
     clearCurrentContact,
     updateCurrentContact,
+    addAllContacts,
   } = useContext(ContactContext);
   const { authState } = useContext(AuthContext);
 
   const { data, loading, postRequest } = usePostRequest();
 
   useEffect(() => {
-    // console.log('addContact: ', data);
+    if (authState.token) {
+      getAllContacts(authState.token);
+    }
+  }, [data]);
+
+  const getAllContacts = async (token) => {
+    let allUsers = await getAllUsers(endpointsExpress.contacts, token);
+
+    addAllContacts(allUsers);
+  };
+
+  useEffect(() => {
     if (data && data.errors) {
       setErrors(data);
     }
@@ -64,7 +76,6 @@ const AddContact = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // console.log(endpointsExpress.contacts);
 
     const body = {
       name,
@@ -78,14 +89,33 @@ const AddContact = () => {
       token = authState.token;
     }
 
-    console.log('add contact');
     await postRequest(endpointsExpress.contacts, body, token);
 
-    console.log(data);
     if (data && !data.errors) {
-      console.log('Add Contact ==========');
       addContact(body);
       clearState();
+    }
+  };
+
+  const getAllUsers = async (url, token) => {
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          origin: '*',
+          [configText.auth.token]: token,
+        },
+      });
+
+      if (!response.ok) {
+        throw Error();
+      }
+
+      const data = await response.json();
+      console.log(data);
+      return data;
+    } catch (err) {
+      console.log(err.message);
     }
   };
 

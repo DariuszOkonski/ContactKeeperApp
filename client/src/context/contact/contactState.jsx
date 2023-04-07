@@ -3,6 +3,7 @@ import { contactReducer } from './contactReducer';
 import ContactContext from './contactContext';
 import { v4 } from 'uuid';
 import {
+  ADD_ALL_CONTACTS,
   ADD_CONTACT,
   CLEAR_CURRENT,
   CLEAR_FILTER,
@@ -20,6 +21,13 @@ export const initialState = {
 
 const ContactStateProvider = (props) => {
   const [contactState, dispatch] = useReducer(contactReducer, initialState);
+
+  const addAllContacts = (contacts) => {
+    dispatch({
+      type: ADD_ALL_CONTACTS,
+      payload: contacts,
+    });
+  };
 
   const addContact = (contact) => {
     contact.id = v4();
@@ -81,6 +89,7 @@ const ContactStateProvider = (props) => {
         updateCurrentContact,
         filterContacts,
         clearFilter,
+        addAllContacts,
       }}
     >
       {props.children}
