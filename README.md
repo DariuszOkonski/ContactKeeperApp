@@ -46,7 +46,6 @@ It's a simple CRUD application for keeping people's contacts.
 
 ### npm run start:dev
 
-### access to user with some fake data
-
-login: ksmith@gmail.com
-password: password
+- access to user with some fake data
+  - login: ksmith@gmail.com
+  - password: password
