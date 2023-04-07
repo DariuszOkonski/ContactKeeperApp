@@ -1,8 +1,27 @@
 ![image](client/public/gitImg/main.png)
 
+# Contact Keeper App
+
+It's a simple CRUD application for keeping peoples contacts.
+
 ## FRONTEND technologies
 
+- react
+- react-router-dom
+- uuid
+- css
+
 ## BACKEND technologies
+
+- bcryptjs
+- jsonwebtoken
+- config
+- cors
+- express
+- express-calidator
+- mongoose
+- mongodb
+- nodemon
 
 ## How to run app
 
