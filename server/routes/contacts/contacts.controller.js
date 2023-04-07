@@ -5,6 +5,9 @@ const { configText } = require('../../utils/configText');
 
 checkAddContact = [
   check('name', configText.validation.nameRequired).not().isEmpty(),
+  check('email', configText.validation.emailRequired).not().isEmpty(),
+  check('phone', configText.validation.phoneRequired).not().isEmpty(),
+  check('type', configText.validation.typeRequired).not().isEmpty(),
 ];
 
 async function getContacts(req, res) {

@@ -12,6 +12,7 @@ const Input = ({ type, name, labelText, value, onChange }) => {
         name={name}
         value={value}
         onChange={onChange}
+        required
       />
     </div>
   );

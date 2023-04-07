@@ -6,8 +6,8 @@ import { useContext } from 'react';
 import AuthContext from '../../context/auth/authContext';
 
 const Navigation = () => {
-  const { state } = useContext(AuthContext);
-  const { isAuthenticated } = state;
+  const { authState } = useContext(AuthContext);
+  const { isAuthenticated } = authState;
 
   return (
     <div className='navigation'>
@@ -17,7 +17,7 @@ const Navigation = () => {
           <h2>{configText.navigation.logo.text}</h2>
         ) : (
           <h4>
-            {configText.navigation.logo.user} {state.user.name}
+            {configText.navigation.logo.user} {authState.user.name}
           </h4>
         )}
       </Link>

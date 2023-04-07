@@ -13,42 +13,13 @@ import {
 } from '../types';
 
 export const initialState = {
-  contacts: [
-    {
-      id: '1',
-      name: 'Jill Johnson',
-      email: 'jill@gmail.com',
-      phone: '111-111-111',
-      type: 'Personal',
-    },
-    {
-      id: '2',
-      name: 'Sara Watson',
-      email: 'sara@gmail.com',
-      phone: '222-222-222',
-      type: 'Personal',
-    },
-    {
-      id: '3',
-      name: 'Harry White',
-      email: 'harry@gmail.com',
-      phone: '333-333-333',
-      type: 'Professional',
-    },
-    {
-      id: '4',
-      name: 'Samuel L Jackson',
-      email: 'samuel@gmail.com',
-      phone: '335-355-333',
-      type: 'Personal',
-    },
-  ],
+  contacts: [],
   current: null,
   filtered: null,
 };
 
 const ContactStateProvider = (props) => {
-  const [state, dispatch] = useReducer(contactReducer, initialState);
+  const [contactState, dispatch] = useReducer(contactReducer, initialState);
 
   const addContact = (contact) => {
     contact.id = v4();
@@ -102,7 +73,7 @@ const ContactStateProvider = (props) => {
   return (
     <ContactContext.Provider
       value={{
-        state,
+        contactState,
         addContact,
         deleteContact,
         setCurrentContact,

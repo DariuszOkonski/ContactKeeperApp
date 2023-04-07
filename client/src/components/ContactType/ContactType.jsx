@@ -11,7 +11,7 @@ function ContactType() {
   const [foundContacts, setFoundContacts] = useState([]);
 
   const {
-    state,
+    contactState,
     deleteContact,
     setCurrentContact,
     clearCurrentContact,
@@ -19,12 +19,12 @@ function ContactType() {
   } = useContext(ContactContext);
 
   useEffect(() => {
-    if (!state.filtered) {
-      setFoundContacts(state.contacts);
+    if (!contactState.filtered) {
+      setFoundContacts(contactState.contacts);
     } else {
-      setFoundContacts(state.filtered);
+      setFoundContacts(contactState.filtered);
     }
-  }, [state]);
+  }, [contactState]);
 
   useEffect(() => {
     filterContacts(find);

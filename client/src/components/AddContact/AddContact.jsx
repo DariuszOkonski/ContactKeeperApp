@@ -10,6 +10,7 @@ import { errorTimeOut } from '../../utils/constants';
 import { endpointsExpress } from '../../utils/endpoints';
 import Select from '../Select/Select';
 import ContactContext from '../../context/contact/contactContext';
+import AuthContext from '../../context/auth/authContext';
 
 const AddContact = () => {
   const [showError, setShowError] = useState(false);
@@ -19,8 +20,13 @@ const AddContact = () => {
   const [phone, setPhone] = useState('');
   const [type, setType] = useState(configText.select.options.professional);
 
-  const { addContact, state, clearCurrentContact, updateCurrentContact } =
-    useContext(ContactContext);
+  const {
+    addContact,
+    contactState,
+    clearCurrentContact,
+    updateCurrentContact,
+  } = useContext(ContactContext);
+  const { authState } = useContext(AuthContext);
 
   const { data, loading, postRequest } = usePostRequest();
 
@@ -30,15 +36,15 @@ const AddContact = () => {
       setErrors(data);
     }
 
-    if (state.current) {
-      setName(state.current.name);
-      setEmail(state.current.email);
-      setPhone(state.current.phone);
-      setType(state.current.type);
+    if (contactState.current) {
+      setName(contactState.current.name);
+      setEmail(contactState.current.email);
+      setPhone(contactState.current.phone);
+      setType(contactState.current.type);
     } else {
       clearState();
     }
-  }, [data, loading, state]);
+  }, [data, loading, contactState]);
 
   const setErrors = (errors) => {
     setDataError(errors);
@@ -66,13 +72,21 @@ const AddContact = () => {
       phone,
       type,
     };
-    // await postRequest(endpointsExpress.contacts, body);
 
-    // if (data && !data.errors) {
-    console.log('Add Contact ==========');
-    addContact(body);
-    clearState();
-    // }
+    let token = null;
+    if (authState && authState.token) {
+      token = authState.token;
+    }
+
+    console.log('add contact');
+    await postRequest(endpointsExpress.contacts, body, token);
+
+    console.log(data);
+    if (data && !data.errors) {
+      console.log('Add Contact ==========');
+      addContact(body);
+      clearState();
+    }
   };
 
   const onClear = (e) => {
@@ -86,7 +100,7 @@ const AddContact = () => {
     // console.log('onEdit: ');
 
     const body = {
-      id: state.current.id,
+      id: contactState.current.id,
       name,
       email,
       phone,
@@ -104,7 +118,7 @@ const AddContact = () => {
       {showError && <ErrorsList errors={dataError?.errors} />}
       <AccountTitle
         prefix={
-          !state.current
+          !contactState.current
             ? configText.addContact.prefixAdd
             : configText.addContact.prefixEdit
         }
@@ -140,7 +154,7 @@ const AddContact = () => {
         onChange={(e) => setType(e.target.value)}
       />
 
-      {!state.current ? (
+      {!contactState.current ? (
         <Button
           clsName='btn btn-primary btn-wide mtb-small'
           text={configText.buttons.addContact}
@@ -154,7 +168,7 @@ const AddContact = () => {
         />
       )}
 
-      {state.current && (
+      {contactState.current && (
         <Button
           clsName='btn btn-dark btn-wide'
           text={configText.buttons.clear}

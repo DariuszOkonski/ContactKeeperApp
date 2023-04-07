@@ -14,8 +14,8 @@ import AuthContext from './context/auth/authContext';
 import Logout from './components/Logout/Logout';
 
 function App() {
-  const { loginUser, state } = useContext(AuthContext);
-  const { isAuthenticated } = state;
+  const { loginUser, authState } = useContext(AuthContext);
+  const { isAuthenticated } = authState;
 
   const checkIfLoggedIn = async () => {
     const token = localStorage.getItem(configText.auth.token);

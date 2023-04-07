@@ -20,7 +20,7 @@ export const initialState = {
 };
 
 const AuthStateProvider = (props) => {
-  const [state, dispatch] = useReducer(authReducer, initialState);
+  const [authState, dispatch] = useReducer(authReducer, initialState);
 
   // load user
   // register user
@@ -62,7 +62,7 @@ const AuthStateProvider = (props) => {
   return (
     <AuthContext.Provider
       value={{
-        state,
+        authState,
         registerUser,
         registerFailed,
         loginUser,

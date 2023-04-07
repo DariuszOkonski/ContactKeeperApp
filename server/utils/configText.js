@@ -12,6 +12,9 @@ const configText = {
     password: 'Please entar a password with 6 or more characters',
     passwordRequired: 'Password is required',
     nameRequired: 'Name is required',
+    emailRequired: 'E-mail is required',
+    phoneRequired: 'Phone is required',
+    typeRequired: 'Type is required',
   },
   errors: {
     serverError: 'Server Error',

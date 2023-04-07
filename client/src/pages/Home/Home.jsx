@@ -6,8 +6,8 @@ import { useContext } from 'react';
 import AuthContext from '../../context/auth/authContext';
 
 const Home = () => {
-  const { state } = useContext(AuthContext);
-  const { isAuthenticated } = state;
+  const { authState } = useContext(AuthContext);
+  const { isAuthenticated } = authState;
 
   return (
     <div className='home'>
