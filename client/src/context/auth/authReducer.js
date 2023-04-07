@@ -9,14 +9,6 @@ import {
 
 export const authReducer = (state, action) => {
   switch (action.type) {
-    // case REGISTER_SUCCESS:
-    //   localStorage.setItem(configText.auth.token, action.payload);
-    //   return {
-    //     ...state,
-    //     token: action.payload,
-    //     isAuthenticated: true,
-    //     // user: null,
-    //   };
     case REGISTER_FAIL:
     case LOGIN_FAIL:
     case LOGOUT:

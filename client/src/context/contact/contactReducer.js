@@ -10,9 +10,6 @@ import {
 } from '../types';
 
 export const contactReducer = (state, action) => {
-  // console.log('=== reducer ===');
-  // console.log(state);
-  // console.log(action);
   switch (action.type) {
     case ADD_ALL_CONTACTS:
       return {

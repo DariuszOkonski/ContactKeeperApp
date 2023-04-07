@@ -5,10 +5,16 @@ const { check, validationResult } = require('express-validator');
 const User = require('../../models/user.model');
 const { configText } = require('../../utils/configText');
 const { EXPIRES_IN } = require('../../utils/constants');
+const {
+  jesonWebTokenSecret,
+  email,
+  password,
+  _password,
+} = require('../../config/const');
 
 const checkLogInUserData = [
-  check('email', configText.validation.email).isEmail(),
-  check('password', configText.validation.passwordRequired).not().isEmpty(),
+  check(email, configText.validation.email).isEmail(),
+  check(password, configText.validation.passwordRequired).not().isEmpty(),
 ];
 
 /**
@@ -18,7 +24,7 @@ const checkLogInUserData = [
  */
 async function getLoggedInUser(req, res) {
   try {
-    const user = await User.findById(req.user.id).select('-password');
+    const user = await User.findById(req.user.id).select(_password);
     return res.status(200).json(user);
   } catch (error) {
     const errors = {
@@ -66,7 +72,7 @@ async function logInUser(req, res) {
       },
     };
 
-    const secret = config.get('jesonWebTokenSecret');
+    const secret = config.get(jesonWebTokenSecret);
     jwt.sign(
       payload,
       secret,

@@ -1,0 +1,13 @@
+export const jesonWebTokenSecret = 'jesonWebTokenSecret';
+export const users = 'users';
+export const Personal = 'Personal';
+export const contact = 'contact';
+export const user = 'user';
+export const id = ':id';
+export const email = 'email';
+export const password = 'password';
+export const _password = '-password';
+export const name = 'name';
+export const phone = 'phone';
+export const type = 'type';
+export const Users = 'Users';

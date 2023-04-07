@@ -35,6 +35,7 @@ const AddContact = () => {
     if (authState.token) {
       getAllContacts(authState.token);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   const getAllContacts = async (token) => {
@@ -112,10 +113,9 @@ const AddContact = () => {
       }
 
       const data = await response.json();
-      console.log(data);
       return data;
     } catch (err) {
-      console.log(err.message);
+      console.error(err.message);
     }
   };
 
@@ -127,7 +127,6 @@ const AddContact = () => {
 
   const onEdit = (e) => {
     e.preventDefault();
-    // console.log('onEdit: ');
 
     const body = {
       _id: contactState.current._id,
@@ -137,7 +136,6 @@ const AddContact = () => {
       type,
     };
 
-    // console.log(body);
     updateCurrentContact(body);
     clearCurrentContact();
     clearState();

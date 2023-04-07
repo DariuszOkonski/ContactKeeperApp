@@ -2,12 +2,13 @@ const User = require('../../models/user.model');
 const Contact = require('../../models/contact.model');
 const { check, validationResult } = require('express-validator');
 const { configText } = require('../../utils/configText');
+const { name, email, phone, type } = require('../../config/const');
 
 checkAddContact = [
-  check('name', configText.validation.nameRequired).not().isEmpty(),
-  check('email', configText.validation.emailRequired).not().isEmpty(),
-  check('phone', configText.validation.phoneRequired).not().isEmpty(),
-  check('type', configText.validation.typeRequired).not().isEmpty(),
+  check(name, configText.validation.nameRequired).not().isEmpty(),
+  check(email, configText.validation.emailRequired).not().isEmpty(),
+  check(phone, configText.validation.phoneRequired).not().isEmpty(),
+  check(type, configText.validation.typeRequired).not().isEmpty(),
 ];
 
 async function getContacts(req, res) {

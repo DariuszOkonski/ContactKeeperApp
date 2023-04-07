@@ -5,17 +5,24 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { EXPIRES_IN } = require('../../utils/constants');
+const {
+  jesonWebTokenSecret,
+  name,
+  email,
+  password,
+  Users,
+} = require('../../config/const');
 
 const checkUserRegistrationData = [
-  check('name', configText.validation.name).not().isEmpty(),
-  check('email', configText.validation.email).isEmail(),
-  check('password', configText.validation.password).isLength({
+  check(name, configText.validation.name).not().isEmpty(),
+  check(email, configText.validation.email).isEmail(),
+  check(password, configText.validation.password).isLength({
     min: 6,
   }),
 ];
 
 function getUsers(req, res) {
-  return res.status(200).json({ message: 'Users' });
+  return res.status(200).json({ message: Users });
 }
 
 /**
@@ -53,7 +60,7 @@ async function userRegistration(req, res) {
       },
     };
 
-    const secret = config.get('jesonWebTokenSecret');
+    const secret = config.get(jesonWebTokenSecret);
     jwt.sign(
       payload,
       secret,

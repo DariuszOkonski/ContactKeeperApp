@@ -33,16 +33,12 @@ function ContactType() {
 
   useEffect(() => {
     filterContacts(find);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [find]);
 
   const onDelete = (_id) => {
-    console.log('onDeleteToken: ', token);
-
     if (token) {
       deleteContact(_id);
-      console.log('delete Contact: ', _id);
-      console.log(endpointsExpress.deleteContact(_id));
-
       deleteRequest(endpointsExpress.deleteContact(_id), token);
       clearCurrentContact();
       clearInput();
@@ -61,10 +57,9 @@ function ContactType() {
       });
 
       const data = await response.json();
-      console.log('DELETED');
-      console.log(data);
+      return data;
     } catch (err) {
-      console.log(err);
+      console.error(err.message);
     }
   };
 

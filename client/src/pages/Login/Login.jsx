@@ -27,20 +27,12 @@ function Login() {
       loginFailed();
     }
 
-    console.log('!!! login data: ', data);
-
     if (data && data.loggedUser && data.loggedUser.token) {
       loginUser(data.loggedUser);
       navigate(endpoints.contacts);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, loading]);
-
-  // const GetRequest = async (token) => {
-  //   const user = await useGetRequest(endpointsExpress.auth, token);
-  //   console.log(user);
-
-  //   return user;
-  // };
 
   const onSubmit = async (e) => {
     e.preventDefault();

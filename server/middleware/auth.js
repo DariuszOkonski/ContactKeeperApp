@@ -1,12 +1,11 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { configText } = require('../utils/configText');
+const { jesonWebTokenSecret } = require('../config/const');
 
 const isUserAuthorized = (req, res, next) => {
-  // get token from header
   const token = req.header(configText.token.name);
 
-  // check if not exists
   if (!token) {
     const errors = {
       errors: [{ msg: configText.errors.noTokenAuthDenied }],
@@ -15,7 +14,7 @@ const isUserAuthorized = (req, res, next) => {
   }
 
   try {
-    const secret = config.get('jesonWebTokenSecret');
+    const secret = config.get(jesonWebTokenSecret);
     const decoded = jwt.verify(token, secret);
 
     req.user = decoded.user;

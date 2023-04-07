@@ -9,21 +9,15 @@ import {
   REGISTER_FAIL,
   REGISTER_SUCCESS,
 } from '../types';
-import useGetRequest from '../../hooks/useGetRequest';
 
 export const initialState = {
   token: localStorage.getItem(configText.auth.token),
   isAuthenticated: null,
   user: null,
-  // loading: true,
-  // error: null,
 };
 
 const AuthStateProvider = (props) => {
   const [authState, dispatch] = useReducer(authReducer, initialState);
-
-  // load user
-  // register user
   const registerUser = (token) => {
     dispatch({
       type: REGISTER_SUCCESS,
@@ -36,7 +30,6 @@ const AuthStateProvider = (props) => {
       type: REGISTER_FAIL,
     });
   };
-  // login user
   const loginUser = (loggedUser) => {
     dispatch({
       type: LOGIN_SUCCESS,
@@ -55,9 +48,6 @@ const AuthStateProvider = (props) => {
       type: LOGOUT,
     });
   };
-
-  // logout
-  // clear errors
 
   return (
     <AuthContext.Provider

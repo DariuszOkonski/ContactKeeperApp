@@ -29,11 +29,11 @@ function Register() {
       registerFailed();
     }
 
-    console.log('!!! register data: ', data);
     if (data && data.loggedUser && data.loggedUser.token) {
       registerUser(data.loggedUser);
       navigate(endpoints.contacts);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, loading]);
 
   const onSubmit = async (e) => {

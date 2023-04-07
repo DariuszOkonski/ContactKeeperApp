@@ -9,6 +9,7 @@ const {
   deleteContact,
   checkAddContact,
 } = require('./contacts.controller');
+const { id } = require('../../config/const');
 const contactsRouter = express.Router();
 
 /**
@@ -34,14 +35,18 @@ contactsRouter.post(
  * @desc    update contact
  * @access  Private
  */
-contactsRouter.put(`${endpoints.slash}:id`, isUserAuthorized, updateContact);
+contactsRouter.put(`${endpoints.slash}${id}`, isUserAuthorized, updateContact);
 
 /**
  * @route   DELETE api/contacts/:id
  * @desc    delete contact
  * @access  Private
  */
-contactsRouter.delete(`${endpoints.slash}:id`, isUserAuthorized, deleteContact);
+contactsRouter.delete(
+  `${endpoints.slash}${id}`,
+  isUserAuthorized,
+  deleteContact
+);
 
 module.exports = {
   contactsRouter,
