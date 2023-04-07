@@ -2,8 +2,13 @@ import configText from '../../utils/cofigText';
 import './Navigation.css';
 import { Link } from 'react-router-dom';
 import { endpoints } from '../../utils/endpoints';
+import { useContext } from 'react';
+import AuthContext from '../../context/auth/authContext';
 
 const Navigation = () => {
+  const { state } = useContext(AuthContext);
+  const { isAuthenticated } = state;
+
   return (
     <div className='navigation'>
       <Link className='navigation__logo' to={endpoints.home}>
@@ -16,26 +21,44 @@ const Navigation = () => {
           <li className='navigation__item'>
             <Link to={endpoints.home}>{configText.navigation.links.home}</Link>
           </li>
-          <li className='navigation__item'>
-            <Link to={endpoints.contacts}>
-              {configText.navigation.links.contacts}
-            </Link>
-          </li>
-          <li className='navigation__item'>
-            <Link to={endpoints.about}>
-              {configText.navigation.links.about}
-            </Link>
-          </li>
-          <li className='navigation__item'>
-            <Link to={endpoints.register}>
-              {configText.navigation.links.register}
-            </Link>
-          </li>
-          <li className='navigation__item'>
-            <Link to={endpoints.login}>
-              {configText.navigation.links.login}
-            </Link>
-          </li>
+
+          {isAuthenticated && (
+            <>
+              <li className='navigation__item'>
+                <Link to={endpoints.contacts}>
+                  {configText.navigation.links.contacts}
+                </Link>
+              </li>
+              <li className='navigation__item'>
+                <Link to={endpoints.about}>
+                  {configText.navigation.links.about}
+                </Link>
+              </li>
+            </>
+          )}
+
+          {!isAuthenticated && (
+            <>
+              <li className='navigation__item'>
+                <Link to={endpoints.register}>
+                  {configText.navigation.links.register}
+                </Link>
+              </li>
+              <li className='navigation__item'>
+                <Link to={endpoints.login}>
+                  {configText.navigation.links.login}
+                </Link>
+              </li>
+            </>
+          )}
+
+          {isAuthenticated && (
+            <li className='navigation__item'>
+              <Link to={endpoints.logout}>
+                {configText.navigation.links.logout}
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </div>

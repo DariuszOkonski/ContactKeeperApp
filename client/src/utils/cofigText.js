@@ -100,7 +100,7 @@ const configText = {
     different: 'Passwords are different',
   },
   auth: {
-    token: 'contact-keeper-token',
+    token: 'x-auth-token',
   },
 };
 

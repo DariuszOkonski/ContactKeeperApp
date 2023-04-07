@@ -4,6 +4,7 @@ import {
   REGISTER_SUCCESS,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  LOGOUT,
 } from '../types';
 
 export const authReducer = (state, action) => {
@@ -18,6 +19,7 @@ export const authReducer = (state, action) => {
     //   };
     case REGISTER_FAIL:
     case LOGIN_FAIL:
+    case LOGOUT:
       localStorage.removeItem(configText.auth.token);
       return {
         ...state,

@@ -11,9 +11,11 @@ import Contacts from './pages/Contacts/Contacts';
 import configText from './utils/cofigText';
 import { useContext, useEffect } from 'react';
 import AuthContext from './context/auth/authContext';
+import Logout from './components/Logout/Logout';
 
 function App() {
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, state } = useContext(AuthContext);
+  const { isAuthenticated } = state;
 
   const checkIfLoggedIn = async () => {
     const token = localStorage.getItem(configText.auth.token);
@@ -31,17 +33,13 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    checkIfLoggedIn();
-  }, []);
-
   const getLoggedInUser = async (url, token) => {
     try {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
           origin: '*',
-          'x-auth-token': token,
+          [configText.auth.token]: token,
         },
       });
 
@@ -55,6 +53,11 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    checkIfLoggedIn();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <BrowserRouter>
       <div className='App'>
@@ -62,10 +65,40 @@ function App() {
         <div className='container'>
           <Routes>
             <Route path={endpoints.home} element={<Home />} />
-            <Route path={endpoints.contacts} element={<Contacts />} />
-            <Route path={endpoints.about} element={<About />} />
-            <Route path={endpoints.register} element={<Register />} />
-            <Route path={endpoints.login} element={<Login />} />
+
+            <Route
+              path={endpoints.contacts}
+              element={
+                isAuthenticated ? (
+                  <Contacts />
+                ) : (
+                  <Navigate to={endpoints.login} />
+                )
+              }
+            />
+            <Route
+              path={endpoints.about}
+              element={
+                isAuthenticated ? <About /> : <Navigate to={endpoints.login} />
+              }
+            />
+            <Route
+              path={endpoints.register}
+              element={
+                !isAuthenticated ? (
+                  <Register />
+                ) : (
+                  <Navigate to={endpoints.home} />
+                )
+              }
+            />
+            <Route
+              path={endpoints.login}
+              element={
+                !isAuthenticated ? <Login /> : <Navigate to={endpoints.home} />
+              }
+            />
+            <Route path={endpoints.logout} element={<Logout />} />
             <Route path={endpoints.notFound} element={<Error />} />
             <Route
               path={endpoints.error}

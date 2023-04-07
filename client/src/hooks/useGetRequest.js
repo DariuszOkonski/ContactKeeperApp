@@ -14,7 +14,7 @@ const useGetRequest = () => {
         method: 'GET',
         headers: {
           origin: '*',
-          'x-auth-token': token,
+          [configText.auth.token]: token,
         },
       });
 

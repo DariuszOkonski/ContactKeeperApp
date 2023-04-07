@@ -32,7 +32,7 @@ function Register() {
     console.log('!!! register data: ', data);
     if (data && data.loggedUser && data.loggedUser.token) {
       registerUser(data.loggedUser);
-      // navigate(endpoints.contacts);
+      navigate(endpoints.contacts);
     }
   }, [data, loading]);
 

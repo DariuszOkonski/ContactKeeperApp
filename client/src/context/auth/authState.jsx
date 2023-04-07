@@ -5,6 +5,7 @@ import configText from '../../utils/cofigText';
 import {
   LOGIN_FAIL,
   LOGIN_SUCCESS,
+  LOGOUT,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
 } from '../types';
@@ -49,12 +50,25 @@ const AuthStateProvider = (props) => {
     });
   };
 
+  const logoutUser = () => {
+    dispatch({
+      type: LOGOUT,
+    });
+  };
+
   // logout
   // clear errors
 
   return (
     <AuthContext.Provider
-      value={{ state, registerUser, registerFailed, loginUser, loginFailed }}
+      value={{
+        state,
+        registerUser,
+        registerFailed,
+        loginUser,
+        loginFailed,
+        logoutUser,
+      }}
     >
       {props.children}
     </AuthContext.Provider>

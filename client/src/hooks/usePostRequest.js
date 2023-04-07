@@ -14,7 +14,7 @@ const usePostRequest = () => {
         headers: {
           origin: '*',
           'Content-Type': 'application/json',
-          'x-auth-token': token,
+          [configText.auth.token]: token,
         },
         body: JSON.stringify(body),
       });
@@ -22,7 +22,6 @@ const usePostRequest = () => {
       const data = await response.json();
       setData(data);
     } catch (err) {
-      // console.log('!!! err: ', err);
       let errors = [{ msg: configText.errors.unknownError }];
       setData({ ...data, errors });
     } finally {

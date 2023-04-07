@@ -6,6 +6,7 @@ export const endpoints = {
   about: '/about',
   register: '/register',
   login: '/login',
+  logout: '/logout',
 };
 
 const baseApi = 'http://localhost:5000';
