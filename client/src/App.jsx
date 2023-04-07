@@ -1,4 +1,3 @@
-import './App.css';
 import Navigation from './components/Navigation/Navigation';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { endpoints, endpointsExpress } from './utils/endpoints';
