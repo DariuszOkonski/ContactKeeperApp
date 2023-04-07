@@ -35,7 +35,7 @@ It's a simple CRUD application for keeping people's contacts.
   - package.json
   - package-lock.json
   - README.md
-- open console (cmd, gitbash, PowerShell)
+- open console (cmd, gitbash, PowerShell) in ContactKeeperApp-main path
 - install dependencies by running command:
 
 ### npm run setup:dep
