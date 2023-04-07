@@ -8,14 +8,14 @@ import {
 
 export const authReducer = (state, action) => {
   switch (action.type) {
-    case REGISTER_SUCCESS:
-      localStorage.setItem(configText.auth.token, action.payload);
-      return {
-        ...state,
-        token: action.payload,
-        isAuthenticated: true,
-        // user: null,
-      };
+    // case REGISTER_SUCCESS:
+    //   localStorage.setItem(configText.auth.token, action.payload);
+    //   return {
+    //     ...state,
+    //     token: action.payload,
+    //     isAuthenticated: true,
+    //     // user: null,
+    //   };
     case REGISTER_FAIL:
     case LOGIN_FAIL:
       localStorage.removeItem(configText.auth.token);
@@ -25,6 +25,7 @@ export const authReducer = (state, action) => {
         isAuthenticated: false,
         user: null,
       };
+    case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
       localStorage.setItem(configText.auth.token, action.payload.token);
       return {
