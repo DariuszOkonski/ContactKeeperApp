@@ -17,6 +17,7 @@ export const contactReducer = (state, action) => {
       return {
         ...state,
         contacts: [...state.contacts, action.payload],
+        filtered: [...state.contacts, action.payload],
       };
     case DELETE_CONTACT:
       return {
@@ -24,11 +25,18 @@ export const contactReducer = (state, action) => {
         contacts: state.contacts.filter(
           (contact) => contact.id !== action.payload
         ),
+        filtered: state.filtered.filter(
+          (contact) => contact.id !== action.payload
+        ),
       };
     case UPDATE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.map((contact) => {
+          if (contact.id === action.payload.id) return action.payload;
+          return contact;
+        }),
+        filtered: state.filtered.map((contact) => {
           if (contact.id === action.payload.id) return action.payload;
           return contact;
         }),

@@ -66,13 +66,13 @@ const AddContact = () => {
       phone,
       type,
     };
-    await postRequest(endpointsExpress.contacts, body);
+    // await postRequest(endpointsExpress.contacts, body);
 
-    if (data && !data.errors) {
-      // console.log('Add Contact ==========');
-      addContact(body);
-      clearState();
-    }
+    // if (data && !data.errors) {
+    console.log('Add Contact ==========');
+    addContact(body);
+    clearState();
+    // }
   };
 
   const onClear = (e) => {

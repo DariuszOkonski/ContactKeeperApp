@@ -72,6 +72,7 @@ const configText = {
   navigation: {
     logo: {
       text: 'Contact Keeper',
+      user: 'User:',
     },
     links: {
       home: 'Home',

@@ -10,6 +10,11 @@
 
 .navigation__logo {
   display: flex;
+  align-items: center;
+}
+
+.navigation__logo h4 {
+  font-weight: 100;
 }
 
 .navigation__logo i {

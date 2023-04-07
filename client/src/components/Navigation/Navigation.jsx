@@ -13,7 +13,13 @@ const Navigation = () => {
     <div className='navigation'>
       <Link className='navigation__logo' to={endpoints.home}>
         <i className='fas fa-id-card-alt'></i>
-        <h2>{configText.navigation.logo.text}</h2>
+        {!isAuthenticated ? (
+          <h2>{configText.navigation.logo.text}</h2>
+        ) : (
+          <h4>
+            {configText.navigation.logo.user} {state.user.name}
+          </h4>
+        )}
       </Link>
 
       <div className='navigation__links'>
