@@ -42,7 +42,7 @@ It's a simple CRUD application for keeping people's contacts.
 
 - wait till node_modules show up in main folder as well as in server and client folder
 
-- than start application by running command:
+- then start application by running command:
 
 ### npm run start:dev
 
